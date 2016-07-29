@@ -20,6 +20,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+
+//@ImportResource("app-context.xml")
+//
+//@PropertySource("classpath:application.properties")
+
 @Configuration
 @EnableConfigurationProperties
 @EnableTransactionManagement
@@ -81,13 +86,14 @@ public class AppConfig {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/" + env.getProperty("mysql.database"));
-        dataSource.setUsername("root");
+        dataSource.setUsername(username);
         dataSource.setPassword(env.getProperty("mysql.password"));
 
         return dataSource;
     }
+
     @Bean
-    public HibernateTransactionManager hibTransMan(){
+    public HibernateTransactionManager hibTransMan() {
         return new HibernateTransactionManager(sessionFactory());
     }
 }
