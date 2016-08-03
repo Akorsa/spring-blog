@@ -10,7 +10,7 @@ apply plugin: 'spring-boot'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'io.hibernate.SpringHibernate'
+        attributes 'Main-Class': 'ru.akorsa.springdata.Launcher'
     }
 }
 
