@@ -1,20 +1,13 @@
 package io.hibernate.dao;
 
+import io.hibernate.model.Contact;
+
 import java.util.List;
 
-public interface ContactDao {
-    // Find all contacts
-    List<Contact> findAll();
+public interface ContactDao extends Dao<Contact> {
+    List<Contact> findByEmail(String email);
 
-    // Find all contacts with telephone and hobbies
     List<Contact> findAllWithDetail();
 
-    // Find a contact with details by id
     Contact findById(Long id);
-
-    // Insert or update a contact
-    Contact save(Contact contact);
-
-    // Delete a contact
-    void delete(Contact contact);
 }
