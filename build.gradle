@@ -5,13 +5,13 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'spring-boot'
+allprojects {
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'ru.akorsa.springdata.Launcher'
-    }
+    apply plugin: 'idea'
+    apply plugin: 'spring-boot'
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
 repositories {
@@ -30,6 +30,10 @@ dependencies {
     compile 'com.google.guava:guava-gwt:18.0'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'junit:junit:4.12'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14.1'
 }
 
 
