@@ -4,3 +4,8 @@ jar {
     }
 }
 
+mainClassName = 'ru.akorsa.springdata.jpa.Launcher'
+
+bootRun {
+    addResources = false
+}

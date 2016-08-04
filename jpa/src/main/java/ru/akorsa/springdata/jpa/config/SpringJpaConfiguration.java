@@ -21,9 +21,9 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "ru.akorsa.springdata")
+@ComponentScan(basePackages = "ru.akorsa.springdata.jpa")
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories(basePackages = "ru.akorsa.springdata")
+@EnableJpaRepositories(basePackages = "ru.akorsa.springdata.jpa")
 public class SpringJpaConfiguration {
 
     @Autowired
@@ -58,7 +58,7 @@ public class SpringJpaConfiguration {
         LocalContainerEntityManagerFactoryBean lemfb  = new LocalContainerEntityManagerFactoryBean();
         lemfb.setDataSource(getDataSource());
         lemfb.setJpaVendorAdapter(jpaVendorAdapter());
-        lemfb.setPackagesToScan("ru.akorsa.springdata");
+        lemfb.setPackagesToScan("ru.akorsa.springdata.jpa");
         return lemfb ;
     }
 }
