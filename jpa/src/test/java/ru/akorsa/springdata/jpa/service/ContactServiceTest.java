@@ -1,6 +1,7 @@
 package ru.akorsa.springdata.jpa.service;
 
-import ru.akorsa.springdata.jpa.config.DevConfiguration;
+import ru.akorsa.springdata.jpa.config.ApplicationConfig;
+import ru.akorsa.springdata.jpa.enums.DataConfigProfile;
 import ru.akorsa.springdata.jpa.model.ContactEntity;
 import javassist.NotFoundException;
 import org.junit.Test;
@@ -11,23 +12,22 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import ru.akorsa.springdata.jpa.service.ContactService;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = true)
-@ContextConfiguration(classes = DevConfiguration.class)
+@ContextConfiguration(classes = ApplicationConfig.class)
 @Transactional
-@ActiveProfiles("dev")
+@ActiveProfiles(DataConfigProfile.H2)
 public class ContactServiceTest {
 
     @Autowired
-    private ContactService service;
+    private ContactService contactService;
 
     @Test
     public void findByFirstName() throws NotFoundException {
-        ContactEntity contact = service.findById(1L);
+        ContactEntity contact = contactService.findById(1L);
         assertEquals(contact.getFirstName(), "Summer");
     }
 

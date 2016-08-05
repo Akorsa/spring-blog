@@ -5,9 +5,9 @@ jar {
     }
 }
 
-
-mainClassName = 'ru.akorsa.springdata.hibernate.Launcher'
-
 bootRun {
     addResources = false
+    main = 'ru.akorsa.springdata.hibernate.Launcher'
 }
+
+

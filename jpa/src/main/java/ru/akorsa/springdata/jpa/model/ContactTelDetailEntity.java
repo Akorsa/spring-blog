@@ -2,6 +2,8 @@ package ru.akorsa.springdata.jpa.model;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 /**
  * Created with IntelliJ IDEA.
  * User: daveburke
@@ -9,7 +11,7 @@ import javax.persistence.*;
  * Time: 1:24 PM
  */
 @Entity
-@Table(name = "contact_tel_detail", schema = "", catalog = "dev_hibernate")
+@Table(name = "contact_tel_detail")
 public class ContactTelDetailEntity {
     private Long id;
     private String telType;
@@ -26,7 +28,8 @@ public class ContactTelDetailEntity {
     }
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -55,7 +58,7 @@ public class ContactTelDetailEntity {
         this.telNumber = telNumber;
     }
 
-    @Basic
+    @Version
     @Column(name = "version", nullable = false, insertable = true, updatable = true)
     public int getVersion() {
         return version;

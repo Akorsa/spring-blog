@@ -1,0 +1,519 @@
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\test\jpa\ru\akorsa\springdata\jpa\service\ContactServiceTest.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\test\jpa\ru\akorsa\springdata\jpa\service\ContactServiceTest.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\test\jpa\ru\akorsa\springdata\jpa\SpringDataTests.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\test\jpa\ru\akorsa\springdata\jpa\SpringDataTests.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringProperties.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringProperties.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringUI.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringUI.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringUtils.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\common\SpringUtils.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\ApplicationConfig.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\ApplicationConfig.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\H2Config.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\H2Config.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\JpaCommonConfig.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\JpaCommonConfig.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\MySqlConfig.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\config\db\MySqlConfig.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\enums\DataConfigProfile.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\enums\DataConfigProfile.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\enums\Hbm2ddlType.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\enums\Hbm2ddlType.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\Launcher.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\Launcher.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\ContactEntity.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\ContactEntity.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\ContactTelDetailEntity.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\ContactTelDetailEntity.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\HobbyEntity.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\model\HobbyEntity.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\repository\ContactRepository.class]
+D|RepositoryComponentProvider   |Identified candidate component class: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\repository\ContactRepository.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\service\ContactService.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\service\ContactService.class]
+T|RepositoryComponentProvider   |Scanning file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\service\impl\ContactServiceImpl.class]
+T|RepositoryComponentProvider   |Ignored because not matching any filter: file [C:\Projects\spring-data-0.0.1\build\classes\production\jpa\ru\akorsa\springdata\jpa\service\impl\ContactServiceImpl.class]
+D|epositoryConfigurationDelegate|Registering repository: contactRepository - Interface: ru.akorsa.springdata.jpa.repository.ContactRepository - Factory: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean
+I|tainerEntityManagerFactoryBean|Building JPA container EntityManagerFactory for persistence unit 'default'
+I|LogHelper                     |HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+I|Version                       |HHH000412: Hibernate Core {4.3.5.Final}
+I|Environment                   |HHH000206: hibernate.properties not found
+I|Environment                   |HHH000021: Bytecode provider name : javassist
+D|BasicTypeRegistry             |Adding type registration boolean -> org.hibernate.type.BooleanType@23aa363a
+D|BasicTypeRegistry             |Adding type registration boolean -> org.hibernate.type.BooleanType@23aa363a
+D|BasicTypeRegistry             |Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@23aa363a
+D|BasicTypeRegistry             |Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@77b14724
+D|BasicTypeRegistry             |Adding type registration true_false -> org.hibernate.type.TrueFalseType@7b84fcf8
+D|BasicTypeRegistry             |Adding type registration yes_no -> org.hibernate.type.YesNoType@366ac49b
+D|BasicTypeRegistry             |Adding type registration byte -> org.hibernate.type.ByteType@663411de
+D|BasicTypeRegistry             |Adding type registration byte -> org.hibernate.type.ByteType@663411de
+D|BasicTypeRegistry             |Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@663411de
+D|BasicTypeRegistry             |Adding type registration character -> org.hibernate.type.CharacterType@5b202a3a
+D|BasicTypeRegistry             |Adding type registration char -> org.hibernate.type.CharacterType@5b202a3a
+D|BasicTypeRegistry             |Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@5b202a3a
+D|BasicTypeRegistry             |Adding type registration short -> org.hibernate.type.ShortType@4372b9b6
+D|BasicTypeRegistry             |Adding type registration short -> org.hibernate.type.ShortType@4372b9b6
+D|BasicTypeRegistry             |Adding type registration java.lang.Short -> org.hibernate.type.ShortType@4372b9b6
+D|BasicTypeRegistry             |Adding type registration integer -> org.hibernate.type.IntegerType@42721fe
+D|BasicTypeRegistry             |Adding type registration int -> org.hibernate.type.IntegerType@42721fe
+D|BasicTypeRegistry             |Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@42721fe
+D|BasicTypeRegistry             |Adding type registration long -> org.hibernate.type.LongType@28e8dde3
+D|BasicTypeRegistry             |Adding type registration long -> org.hibernate.type.LongType@28e8dde3
+D|BasicTypeRegistry             |Adding type registration java.lang.Long -> org.hibernate.type.LongType@28e8dde3
+D|BasicTypeRegistry             |Adding type registration float -> org.hibernate.type.FloatType@c5dc4a2
+D|BasicTypeRegistry             |Adding type registration float -> org.hibernate.type.FloatType@c5dc4a2
+D|BasicTypeRegistry             |Adding type registration java.lang.Float -> org.hibernate.type.FloatType@c5dc4a2
+D|BasicTypeRegistry             |Adding type registration double -> org.hibernate.type.DoubleType@5f9678e1
+D|BasicTypeRegistry             |Adding type registration double -> org.hibernate.type.DoubleType@5f9678e1
+D|BasicTypeRegistry             |Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@5f9678e1
+D|BasicTypeRegistry             |Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@31d0e481
+D|BasicTypeRegistry             |Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@31d0e481
+D|BasicTypeRegistry             |Adding type registration big_integer -> org.hibernate.type.BigIntegerType@4dc8caa7
+D|BasicTypeRegistry             |Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@4dc8caa7
+D|BasicTypeRegistry             |Adding type registration string -> org.hibernate.type.StringType@35d08e6c
+D|BasicTypeRegistry             |Adding type registration java.lang.String -> org.hibernate.type.StringType@35d08e6c
+D|BasicTypeRegistry             |Adding type registration nstring -> org.hibernate.type.StringNVarcharType@1338fb5
+D|BasicTypeRegistry             |Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@fade1fc
+D|BasicTypeRegistry             |Adding type registration url -> org.hibernate.type.UrlType@7103cb56
+D|BasicTypeRegistry             |Adding type registration java.net.URL -> org.hibernate.type.UrlType@7103cb56
+D|BasicTypeRegistry             |Adding type registration date -> org.hibernate.type.DateType@39a8312f
+D|BasicTypeRegistry             |Adding type registration java.sql.Date -> org.hibernate.type.DateType@39a8312f
+D|BasicTypeRegistry             |Adding type registration time -> org.hibernate.type.TimeType@5911e990
+D|BasicTypeRegistry             |Adding type registration java.sql.Time -> org.hibernate.type.TimeType@5911e990
+D|BasicTypeRegistry             |Adding type registration timestamp -> org.hibernate.type.TimestampType@2d1dee39
+D|BasicTypeRegistry             |Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@2d1dee39
+D|BasicTypeRegistry             |Adding type registration java.util.Date -> org.hibernate.type.TimestampType@2d1dee39
+D|BasicTypeRegistry             |Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@6ff65192
+D|BasicTypeRegistry             |Adding type registration calendar -> org.hibernate.type.CalendarType@674bd420
+D|BasicTypeRegistry             |Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@674bd420
+D|BasicTypeRegistry             |Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@674bd420
+D|BasicTypeRegistry             |Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@4b45dcb8
+D|BasicTypeRegistry             |Adding type registration locale -> org.hibernate.type.LocaleType@70a36a66
+D|BasicTypeRegistry             |Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@70a36a66
+D|BasicTypeRegistry             |Adding type registration currency -> org.hibernate.type.CurrencyType@23fb172e
+D|BasicTypeRegistry             |Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@23fb172e
+D|BasicTypeRegistry             |Adding type registration timezone -> org.hibernate.type.TimeZoneType@6b00f608
+D|BasicTypeRegistry             |Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@6b00f608
+D|BasicTypeRegistry             |Adding type registration class -> org.hibernate.type.ClassType@615091b8
+D|BasicTypeRegistry             |Adding type registration java.lang.Class -> org.hibernate.type.ClassType@615091b8
+D|BasicTypeRegistry             |Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@ebb6851
+D|BasicTypeRegistry             |Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@ebb6851
+D|BasicTypeRegistry             |Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@6f152006
+D|BasicTypeRegistry             |Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@49872d67
+D|BasicTypeRegistry             |Adding type registration binary -> org.hibernate.type.BinaryType@2f48b3d2
+D|BasicTypeRegistry             |Adding type registration byte[] -> org.hibernate.type.BinaryType@2f48b3d2
+D|BasicTypeRegistry             |Adding type registration [B -> org.hibernate.type.BinaryType@2f48b3d2
+D|BasicTypeRegistry             |Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@101639ae
+D|BasicTypeRegistry             |Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@101639ae
+D|BasicTypeRegistry             |Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@101639ae
+D|BasicTypeRegistry             |Adding type registration image -> org.hibernate.type.ImageType@18bc345
+D|BasicTypeRegistry             |Adding type registration characters -> org.hibernate.type.CharArrayType@6b53bcc2
+D|BasicTypeRegistry             |Adding type registration char[] -> org.hibernate.type.CharArrayType@6b53bcc2
+D|BasicTypeRegistry             |Adding type registration [C -> org.hibernate.type.CharArrayType@6b53bcc2
+D|BasicTypeRegistry             |Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@2320fa6f
+D|BasicTypeRegistry             |Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@2320fa6f
+D|BasicTypeRegistry             |Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@2320fa6f
+D|BasicTypeRegistry             |Adding type registration text -> org.hibernate.type.TextType@3d97a632
+D|BasicTypeRegistry             |Adding type registration ntext -> org.hibernate.type.NTextType@60957c0f
+D|BasicTypeRegistry             |Adding type registration blob -> org.hibernate.type.BlobType@4bff64c2
+D|BasicTypeRegistry             |Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@4bff64c2
+D|BasicTypeRegistry             |Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@c2db68f
+D|BasicTypeRegistry             |Adding type registration clob -> org.hibernate.type.ClobType@655ef322
+D|BasicTypeRegistry             |Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@655ef322
+D|BasicTypeRegistry             |Adding type registration nclob -> org.hibernate.type.NClobType@e84a8e1
+D|BasicTypeRegistry             |Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@e84a8e1
+D|BasicTypeRegistry             |Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@7d42c224
+D|BasicTypeRegistry             |Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@35390ee3
+D|BasicTypeRegistry             |Adding type registration serializable -> org.hibernate.type.SerializableType@704f1591
+D|BasicTypeRegistry             |Adding type registration object -> org.hibernate.type.ObjectType@5f7b97da
+D|BasicTypeRegistry             |Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@5f7b97da
+D|BasicTypeRegistry             |Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@3a1dd365
+D|BasicTypeRegistry             |Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@395b56bb
+D|BasicTypeRegistry             |Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@256f8274
+D|BasicTypeRegistry             |Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@68044f4
+D|BasicTypeRegistry             |Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@52d239ba
+D|BasicTypeRegistry             |Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@315f43d5
+D|BasicTypeRegistry             |Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@68fa0ba8
+D|BasicTypeRegistry             |Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@6c5945a7
+I|Version                       |HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+D|Configuration                 |Preparing to build session factory with filters : {}
+I|Dialect                       |HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+I|LobCreatorBuilder             |HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+D|Configuration                 |Processing hbm.xml files
+D|Configuration                 |Process annotated classes
+D|AnnotationBinder              |Binding entity from annotated class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|QueryBinder                   |Binding named query: ContactEntity.findById => select distinct c from ContactEntity c left join fetch c.contactTelDetailEntities t left join fetch c.hobbyEntities h where c.id= :id
+D|QueryBinder                   |Binding named query: ContactEntity.findAllWithDetail => select distinct c from ContactEntity c left join fetch c.contactTelDetailEntities t left join fetch c.hobbyEntities h
+D|QueryBinder                   |Binding named query: ContactEntity.findContactsByEmail => select distinct c from ContactEntity c where email like :email
+D|Ejb3Column                    |Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
+D|EntityBinder                  |Import with entity name ContactEntity
+D|EntityBinder                  |Bind entity ru.akorsa.springdata.jpa.model.ContactEntity on table contact
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=id, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property id with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:id]
+D|SimpleValueBinder             |building SimpleValue for id
+D|PropertyBinder                |Building property id
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=birth_date, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property birthDate with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:birthDate]
+D|SimpleValueBinder             |building SimpleValue for birthDate
+D|PropertyBinder                |Building property birthDate
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='contactEntity'}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=contact_tel_detail_entities, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=null, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=element, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=contact_tel_detail_entities_key, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='contactTelDetailEntities_KEY', referencedColumn='null', mappedBy='null'}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='contactEntity'}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='contactEntity'}
+D|CollectionBinder              |Collection role: ru.akorsa.springdata.jpa.model.ContactEntity.contactTelDetailEntities
+D|PropertyBinder                |Building property contactTelDetailEntities
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=email, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property email with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:email]
+D|SimpleValueBinder             |building SimpleValue for email
+D|PropertyBinder                |Building property email
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=first_name, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property firstName with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:firstName]
+D|SimpleValueBinder             |building SimpleValue for firstName
+D|PropertyBinder                |Building property firstName
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=null, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=element, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=hobby_entities_key, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='hobbyEntities_KEY', referencedColumn='null', mappedBy='null'}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='contact_id', referencedColumn='id', mappedBy=''}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='hobby_id', referencedColumn='hobby_id', mappedBy=''}
+D|CollectionBinder              |Collection role: ru.akorsa.springdata.jpa.model.ContactEntity.hobbyEntities
+D|PropertyBinder                |Building property hobbyEntities
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=last_name, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property lastName with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:lastName]
+D|SimpleValueBinder             |building SimpleValue for lastName
+D|PropertyBinder                |Building property lastName
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact), mappingColumn=version, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property version with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactEntity:version]
+D|SimpleValueBinder             |building SimpleValue for version
+D|PropertyBinder                |Building property version
+D|AnnotationBinder              |Binding entity from annotated class: ru.akorsa.springdata.jpa.model.ContactTelDetailEntity
+D|Ejb3Column                    |Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
+D|EntityBinder                  |Import with entity name ContactTelDetailEntity
+D|EntityBinder                  |Bind entity ru.akorsa.springdata.jpa.model.ContactTelDetailEntity on table contact_tel_detail
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact_tel_detail), mappingColumn=id, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property id with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactTelDetailEntity:id]
+D|SimpleValueBinder             |building SimpleValue for id
+D|PropertyBinder                |Building property id
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='contact_id', referencedColumn='id', mappedBy=''}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact_tel_detail), mappingColumn=contact_entity, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |Building property contactEntity
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact_tel_detail), mappingColumn=tel_number, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property telNumber with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactTelDetailEntity:telNumber]
+D|SimpleValueBinder             |building SimpleValue for telNumber
+D|PropertyBinder                |Building property telNumber
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact_tel_detail), mappingColumn=tel_type, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property telType with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactTelDetailEntity:telType]
+D|SimpleValueBinder             |building SimpleValue for telType
+D|PropertyBinder                |Building property telType
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(contact_tel_detail), mappingColumn=version, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property version with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.ContactTelDetailEntity:version]
+D|SimpleValueBinder             |building SimpleValue for version
+D|PropertyBinder                |Building property version
+D|AnnotationBinder              |Binding entity from annotated class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Ejb3Column                    |Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
+D|EntityBinder                  |Import with entity name HobbyEntity
+D|EntityBinder                  |Bind entity ru.akorsa.springdata.jpa.model.HobbyEntity on table hobby
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(hobby), mappingColumn=hobby_id, insertable=true, updatable=true, unique=false}
+D|PropertyBinder                |MetadataSourceProcessor property hobbyId with lazy=false
+D|AbstractPropertyHolder        |Attempting to locate auto-apply AttributeConverter for property [ru.akorsa.springdata.jpa.model.HobbyEntity:hobbyId]
+D|SimpleValueBinder             |building SimpleValue for hobbyId
+D|PropertyBinder                |Building property hobbyId
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(hobby), mappingColumn=null, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(hobby), mappingColumn=element, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3Column{table=org.hibernate.mapping.Table(hobby), mappingColumn=contact_entities_key, insertable=true, updatable=true, unique=false}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='contactEntities_KEY', referencedColumn='null', mappedBy='null'}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='hobbyEntities'}
+D|Ejb3Column                    |Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy='hobbyEntities'}
+D|CollectionBinder              |Collection role: ru.akorsa.springdata.jpa.model.HobbyEntity.contactEntities
+D|PropertyBinder                |Building property contactEntities
+D|SimpleValueBinder             |Starting fillSimpleValue for id
+D|SimpleValueBinder             |Starting fillSimpleValue for birthDate
+D|SimpleValueBinder             |Starting fillSimpleValue for email
+D|SimpleValueBinder             |Starting fillSimpleValue for firstName
+D|SimpleValueBinder             |Starting fillSimpleValue for lastName
+D|SimpleValueBinder             |Starting fillSimpleValue for version
+D|SimpleValueBinder             |Starting fillSimpleValue for id
+D|SimpleValueBinder             |Starting fillSimpleValue for telNumber
+D|SimpleValueBinder             |Starting fillSimpleValue for telType
+D|SimpleValueBinder             |Starting fillSimpleValue for version
+D|SimpleValueBinder             |Starting fillSimpleValue for hobbyId
+D|Configuration                 |Processing fk mappings (*ToOne and JoinedSubclass)
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing collection mappings
+D|CollectionSecondPass          |Second pass for collection: ru.akorsa.springdata.jpa.model.ContactEntity.hobbyEntities
+D|CollectionBinder              |Binding as ManyToMany: ru.akorsa.springdata.jpa.model.ContactEntity.hobbyEntities
+D|CollectionSecondPass          |Mapped collection key: contact_id, element: hobby_id
+D|CollectionSecondPass          |Second pass for collection: ru.akorsa.springdata.jpa.model.ContactEntity.contactTelDetailEntities
+D|CollectionBinder              |Binding a OneToMany: ru.akorsa.springdata.jpa.model.ContactEntity.contactTelDetailEntities through a foreign key
+D|CollectionBinder              |Mapping collection: ru.akorsa.springdata.jpa.model.ContactEntity.contactTelDetailEntities -> contact_tel_detail
+D|TableBinder                   |Retrieving property ru.akorsa.springdata.jpa.model.ContactTelDetailEntity.contactEntity
+D|CollectionSecondPass          |Mapped collection key: contact_id, one-to-many: ru.akorsa.springdata.jpa.model.ContactTelDetailEntity
+D|CollectionSecondPass          |Second pass for collection: ru.akorsa.springdata.jpa.model.HobbyEntity.contactEntities
+D|CollectionBinder              |Binding as ManyToMany: ru.akorsa.springdata.jpa.model.HobbyEntity.contactEntities
+D|TableBinder                   |Retrieving property ru.akorsa.springdata.jpa.model.ContactEntity.hobbyEntities
+D|CollectionSecondPass          |Mapped collection key: hobby_id, element: contact_id
+D|Configuration                 |Processing native query and ResultSetMapping mappings
+D|ResultsetMappingSecondPass    |Binding result set mapping: contactEntityResult
+D|Configuration                 |Processing association property references
+D|Configuration                 |Creating tables' unique integer identifiers
+D|Configuration                 |Processing foreign key constraints
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|SettingsFactory               |Automatic flush during beforeCompletion(): disabled
+D|SettingsFactory               |Automatic session close at end of transaction: disabled
+D|SettingsFactory               |JDBC batch size: 15
+D|SettingsFactory               |JDBC batch updates for versioned data: disabled
+D|SettingsFactory               |Scrollable result sets: enabled
+D|SettingsFactory               |Wrap result sets: disabled
+D|SettingsFactory               |JDBC3 getGeneratedKeys(): enabled
+D|SettingsFactory               |multi-tenancy strategy : NONE
+D|SettingsFactory               |Connection release mode: auto
+D|SettingsFactory               |Using BatchFetchStyle : LEGACY
+D|SettingsFactory               |Default batch fetch size: 1
+D|SettingsFactory               |Generate SQL with comments: enabled
+D|SettingsFactory               |Order SQL updates by primary key: disabled
+D|SettingsFactory               |Order SQL inserts for batching: disabled
+D|SettingsFactory               |Default null ordering: none
+D|SettingsFactory               |Query translator: org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory
+I|ASTQueryTranslatorFactory     |HHH000397: Using ASTQueryTranslatorFactory
+D|SettingsFactory               |Query language substitutions: {}
+D|SettingsFactory               |JPA-QL strict compliance: disabled
+D|SettingsFactory               |Second-level cache: enabled
+D|SettingsFactory               |Query cache: disabled
+D|RegionFactoryInitiator        |Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+D|SettingsFactory               |Optimize cache for minimal puts: disabled
+D|SettingsFactory               |Structured second-level cache entries: disabled
+D|SettingsFactory               |Second-level cache direct-reference entries: disabled
+D|SettingsFactory               |Automatic eviction of collection cache: disabled
+D|SettingsFactory               |Statistics: enabled
+D|SettingsFactory               |Deleted entity synthetic identifier rollback: disabled
+D|SettingsFactory               |Default entity-mode: pojo
+D|SettingsFactory               |Named query checking : enabled
+D|SettingsFactory               |Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+D|SettingsFactory               |Allow initialization of lazy state outside session : : disabled
+D|SettingsFactory               |JTA Track by Thread: enabled
+D|Configuration                 |Processing hbm.xml files
+D|Configuration                 |Process annotated classes
+D|Configuration                 |Processing fk mappings (*ToOne and JoinedSubclass)
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing collection mappings
+D|Configuration                 |Processing native query and ResultSetMapping mappings
+D|Configuration                 |Processing association property references
+D|Configuration                 |Creating tables' unique integer identifiers
+D|Configuration                 |Processing foreign key constraints
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Processing hbm.xml files
+D|Configuration                 |Process annotated classes
+D|Configuration                 |Processing fk mappings (*ToOne and JoinedSubclass)
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing collection mappings
+D|Configuration                 |Processing native query and ResultSetMapping mappings
+D|Configuration                 |Processing association property references
+D|Configuration                 |Creating tables' unique integer identifiers
+D|Configuration                 |Processing foreign key constraints
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+I|SchemaExport                  |HHH000227: Running hbm2ddl schema export
+D|SchemaExport                  |Import file not found: /import.sql
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_hobby_detail drop constraint FK_e409kdsifj6jurkxkimmcuebk
+E|SchemaExport                  |Table "CONTACT_HOBBY_DETAIL" not found; SQL statement:
+
+    alter table contact_hobby_detail 
+        drop constraint FK_e409kdsifj6jurkxkimmcuebk [42102-168]
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_hobby_detail drop constraint FK_2sbruheduaomfujsrc5rg9963
+E|SchemaExport                  |Table "CONTACT_HOBBY_DETAIL" not found; SQL statement:
+
+    alter table contact_hobby_detail 
+        drop constraint FK_2sbruheduaomfujsrc5rg9963 [42102-168]
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_tel_detail drop constraint FK_9m78pab6h4i6oo4fkx9m1wp7r
+E|SchemaExport                  |Table "CONTACT_TEL_DETAIL" not found; SQL statement:
+
+    alter table contact_tel_detail 
+        drop constraint FK_9m78pab6h4i6oo4fkx9m1wp7r [42102-168]
+I|SchemaExport                  |HHH000230: Schema export complete
+D|Configuration                 |Processing hbm.xml files
+D|Configuration                 |Process annotated classes
+D|Configuration                 |Processing fk mappings (*ToOne and JoinedSubclass)
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing collection mappings
+D|Configuration                 |Processing native query and ResultSetMapping mappings
+D|Configuration                 |Processing association property references
+D|Configuration                 |Creating tables' unique integer identifiers
+D|Configuration                 |Processing foreign key constraints
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Processing hbm.xml files
+D|Configuration                 |Process annotated classes
+D|Configuration                 |Processing fk mappings (*ToOne and JoinedSubclass)
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing extends queue
+D|Configuration                 |Processing collection mappings
+D|Configuration                 |Processing native query and ResultSetMapping mappings
+D|Configuration                 |Processing association property references
+D|Configuration                 |Creating tables' unique integer identifiers
+D|Configuration                 |Processing foreign key constraints
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.HobbyEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|Configuration                 |Resolving reference to class: ru.akorsa.springdata.jpa.model.ContactEntity
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+D|JpaQueryFactory               |Looking up query for method findAllWithDetail
+D|NamedQuery                    |Looking up named query ContactEntity.findAllWithDetail
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+D|NamedQuery                    |Did not find named query ContactEntity.findAllWithDetail.count
+D|NamedQuery                    |Found named query ContactEntity.findAllWithDetail!
+D|JpaQueryFactory               |Looking up query for method findByFirstNameAndLastName
+D|NamedQuery                    |Looking up named query ContactEntity.findByFirstNameAndLastName
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+D|JpaQueryFactory               |Looking up query for method findByFirstName
+D|NamedQuery                    |Looking up named query ContactEntity.findByFirstName
+D|EntityManagerInvocationHandler|Creating new EntityManager for shared EntityManager invocation
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+D|tionTransactionAttributeSource|Adding transactional method 'ContactServiceImpl.save' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; 'jpaTransactionManager'
+I|ScriptUtils                   |Executing SQL script from class path resource [db/h2database.sql]
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact (first_name, last_name, birth_date, email, version) values ('Summer', 'Glass', '1981-05-03', 'chris@email.com', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact (first_name, last_name, birth_date, email, version) values ('Scott', 'Tiger', '1990-11-02', 'scott@email.com', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact (first_name, last_name, birth_date, email, version) values ('John', 'Smith', '1964-02-28', 'john@email.com', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_tel_detail (contact_id, tel_type, tel_number, version) values (1, 'Mobile', '1234567890', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_tel_detail (contact_id, tel_type, tel_number, version) values (1, 'Home', '1234567890', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_tel_detail (contact_id, tel_type, tel_number, version) values (2, 'Home', '1234567890', 0)
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into hobby (hobby_id) values ('Swimming')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into hobby (hobby_id) values ('Jogging')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into hobby (hobby_id) values ('Programming')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into hobby (hobby_id) values ('Movies')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into hobby (hobby_id) values ('Reading')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_hobby_detail(contact_id, hobby_id) values (1, 'Swimming')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_hobby_detail(contact_id, hobby_id) values (1, 'Movies')
+D|ScriptUtils                   |1 returned as updateCount for SQL: insert into contact_hobby_detail(contact_id, hobby_id) values (2, 'Swimming')
+I|ScriptUtils                   |Executed SQL script from class path resource [db/h2database.sql] in 27 ms.
+D|tionTransactionAttributeSource|Adding transactional method 'SpringDataTests.contextLoads' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+D|tionTransactionAttributeSource|Adding transactional method 'SpringDataTests.contextLoads' with attribute: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+D|JpaTransactionManager         |Creating new transaction with name [contextLoads]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT; ''
+D|JpaTransactionManager         |Opened new EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@2c8662ac] for JPA transaction
+D|JpaTransactionManager         |Exposing JPA transaction as JDBC transaction [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@524a2ffb]
+D|JpaTransactionManager         |Initiating transaction rollback
+D|JpaTransactionManager         |Rolling back JPA transaction on EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@2c8662ac]
+D|JpaTransactionManager         |Closing JPA EntityManager [org.hibernate.jpa.internal.EntityManagerImpl@2c8662ac] after transaction
+D|EntityManagerFactoryUtils     |Closing JPA EntityManager
+I|calLoggingSessionEventListener|Session Metrics {
+    679200 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+I|tainerEntityManagerFactoryBean|Closing JPA EntityManagerFactory for persistence unit 'default'
+I|SchemaExport                  |HHH000227: Running hbm2ddl schema export
+D|SchemaExport                  |Import file not found: /import.sql
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_hobby_detail drop constraint FK_e409kdsifj6jurkxkimmcuebk
+E|SchemaExport                  |Table "CONTACT_HOBBY_DETAIL" not found; SQL statement:
+
+    alter table contact_hobby_detail 
+        drop constraint FK_e409kdsifj6jurkxkimmcuebk [42102-168]
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_hobby_detail drop constraint FK_2sbruheduaomfujsrc5rg9963
+E|SchemaExport                  |Table "CONTACT_HOBBY_DETAIL" not found; SQL statement:
+
+    alter table contact_hobby_detail 
+        drop constraint FK_2sbruheduaomfujsrc5rg9963 [42102-168]
+E|SchemaExport                  |HHH000389: Unsuccessful: alter table contact_tel_detail drop constraint FK_9m78pab6h4i6oo4fkx9m1wp7r
+E|SchemaExport                  |Table "CONTACT_TEL_DETAIL" not found; SQL statement:
+
+    alter table contact_tel_detail 
+        drop constraint FK_9m78pab6h4i6oo4fkx9m1wp7r [42102-168]
+I|SchemaExport                  |HHH000230: Schema export complete

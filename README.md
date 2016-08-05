@@ -11,6 +11,19 @@ The app is based on Chapter #7 of Pro Spring, Fourth Edition from Apress, "Using
 
 *Implementations listed below by version are found in their corresponding branch, v0.0.1, v0.0.2, etc. The Master branch of this repo contains ongoing development and may not contain features in prior versions.*
 
+##v0.0.8##
+
+- h2database and mySQL JPA Data Configuration
+- Profiles based on Enumerator value (ex: JpaDataConfig.MYSQL)
+
+##v0.0.7##
+
+- ApplicationContext and Data Retrieval Tests
+- "Production" and "Dev" Spring Profiles
+- Re-architected main() to load context, and a single bean to startup application
+- Broke out Production and Dev Profile Configurations, extend base SpringConfiguration class. Plan to redesign further
+- Spring Profile set in Gradle.build bootRun task
+
 ##v0.0.6##
 
 - Generated supplemental Contact, ContactTelDetail and Hobby Entities using the IntelliJ Persistence View GUI tools. (Contain "Entity" classname suffix.)
@@ -82,3 +95,6 @@ Run the setup.sql script in the /install directory to populate the database. Upd
 
  The Generic DAO structure in **Version 0.0.3** was based on Chapter #2 of Spring in Practice by Willie Wheeler and
  Joshua White, "Data persistence, ORM, and transactions." Here is the [Chapter on Safari](http://goo.gl/Q9uoTl).
+
+ Multiple database JPA Configuration implemented in **Version 0.0.8** based largely on the work of Gordon Dickens' [Spring-Data-
+ Demos "Profiles" project](https://goo.gl/IuaWoR).

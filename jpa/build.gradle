@@ -12,7 +12,6 @@ task production << {
 
 bootRun {
     addResources = false
-    systemProperty 'spring.profiles.active', 'production'
-    main = 'ru.akorsa.springdata.jpa.Launcher'
+    systemProperty 'spring.profiles.active', 'mysql'
+    main = 'com.nixmash.springdata.jpa.Launcher'
 }
-
