@@ -27,7 +27,7 @@ dependencies {
     compile 'mysql:mysql-connector-java'
     compile 'commons-dbcp:commons-dbcp'
     compile 'org.apache.tomcat:tomcat-dbcp:8.0.21'
-    compile 'ru.google.guava:guava-gwt:18.0'
+    compile 'com.google.guava:guava-gwt:18.0'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'junit:junit:4.12'
 }
