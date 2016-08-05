@@ -1,8 +1,18 @@
 package ru.akorsa.springdata.hibernate.dao;
+/*
+ * Copyright (c) 2013 Manning Publications Co.
+ *
+ * Book: http://manning.com/wheeler/
+ * Blog: http://springinpractice.com/
+ * Code: https://github.com/springinpractice
+ */
 
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author Willie Wheeler (willie.wheeler@gmail.ru)
+ */
 public interface Dao<T extends Object> {
 
     /**
@@ -16,7 +26,7 @@ public interface Dao<T extends Object> {
     void create(T t);
 
     /**
-     * Finds the requested object in the repository1 and returns it, or null if there is no such persistent instance.
+     * Finds the requested object in the repository and returns it, or null if there is no such persistent instance.
      *
      * @param id ID
      * @return requested object, or null
@@ -26,8 +36,8 @@ public interface Dao<T extends Object> {
     /**
      * <p>
      * Returns either a proxy for the requested object (one having the right class and ID), or else the actual object
-     * if it's available without hitting the repository1 (e.g. in cache). The basic idea behind this method is to allow
-     * apps establish references to the requested object without requiring a call to the repository1.
+     * if it's available without hitting the repository (e.g. in cache). The basic idea behind this method is to allow
+     * apps establish references to the requested object without requiring a call to the repository.
      * </p>
      * <p>
      * Use this method only if you assume the instance actually exists; i.e., non-existence is an exception.

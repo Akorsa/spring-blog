@@ -1,11 +1,17 @@
 package ru.akorsa.springdata.hibernate.service;
 
+
 import ru.akorsa.springdata.hibernate.model.Contact;
 
 import java.util.List;
 
-public interface ContactService {
 
+/**
+ * Contact service interface.
+ *
+ * @author Willie Wheeler (willie.wheeler@gmail.ru)
+ */
+public interface ContactService {
 
     void createContact(Contact contact);
     List<Contact> getContacts();

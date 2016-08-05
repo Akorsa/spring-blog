@@ -3,41 +3,35 @@ package ru.akorsa.springdata.jpa.model;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: daveburke
+ * Date: 4/29/15
+ * Time: 1:24 PM
+ */
 @Entity
-@Table(name = "hobby", schema = "dev_hibernate", catalog = "")
+@Table(name = "hobby", schema = "", catalog = "dev_hibernate")
 public class HobbyEntity {
     private Set<ContactEntity> contactEntities;
 
     @Id
-    @Column(name = "hobby_id", nullable = false, length = 20)
+    @Column(name = "hobby_id")
     public String getHobbyId() {
         return hobbyId;
     }
 
-    public void setHobbyId(String hobbyId) {
-        this.hobbyId = hobbyId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        HobbyEntity that = (HobbyEntity) o;
-
-        if (hobbyId != null ? !hobbyId.equals(that.hobbyId) : that.hobbyId != null) return false;
-
-        return true;
+    public void setHobbyId(String hobby_id) {
+        this.hobbyId = hobby_id;
     }
 
     public String toString() {
         return "Hobby: " + getHobbyId();
     }
 
-    @Override
-    public int hashCode() {
-        return hobbyId != null ? hobbyId.hashCode() : 0;
-    }
+//    @ManyToMany
+//    @JoinTable(name = "contact_hobby_detail",
+//            joinColumns = @JoinColumn(name = "HOBBY_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "CONTACT_ID"))
 
     @ManyToMany(mappedBy = "hobbyEntities")
     public Set<ContactEntity> getContactEntities() {
@@ -49,4 +43,6 @@ public class HobbyEntity {
     }
 
     private String hobbyId;
+
+
 }

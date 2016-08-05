@@ -1,9 +1,9 @@
 package ru.akorsa.springdata.hibernate.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
 
 @Entity
 @Table(name = "hobby")
@@ -25,7 +25,7 @@ public class Hobby implements Serializable {
         return "Hobby :" + getHobbyId();
     }
 
-    private Set<Contact> contacts = new HashSet<>();
+    private Set<Contact> contacts = new HashSet<Contact>();
 
     @ManyToMany
     @JoinTable(name = "contact_hobby_detail",

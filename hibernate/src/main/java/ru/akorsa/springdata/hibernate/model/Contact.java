@@ -20,10 +20,9 @@ import static javax.persistence.GenerationType.IDENTITY;
                 query = "select distinct c from Contact c where email like :email")
 })
 @SqlResultSetMapping(
-        name = "contactResult",
-        entities = @EntityResult(entityClass = Contact.class)
+        name="contactResult",
+        entities=@EntityResult(entityClass=Contact.class)
 )
-
 public class Contact implements Serializable {
     private Long id;
     private int version;
@@ -86,7 +85,7 @@ public class Contact implements Serializable {
     }
 
     private Set<ContactTelDetail> contactTelDetails =
-            new HashSet<>();
+            new HashSet<ContactTelDetail>();
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL,
             orphanRemoval = true)

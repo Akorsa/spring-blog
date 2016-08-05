@@ -1,4 +1,11 @@
 package ru.akorsa.springdata.hibernate.service.impl;
+/*
+ * Copyright (c) 2013 Manning Publications Co.
+ *
+ * Book: http://manning.com/wheeler/
+ * Blog: http://springinpractice.com/
+ * Code: https://github.com/springinpractice
+ */
 
 import ru.akorsa.springdata.hibernate.dao.ContactDao;
 import ru.akorsa.springdata.hibernate.model.Contact;
@@ -11,7 +18,7 @@ import java.util.List;
 
 import static org.springframework.util.Assert.notNull;
 
-@Service(value = "hbnContactService")
+@Service(value="hbnContactService")
 @Transactional(value = "hibernateTransactionManager")
 public class ContactServiceImpl implements ContactService {
 

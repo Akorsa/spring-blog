@@ -2,19 +2,29 @@ package ru.akorsa.springdata.hibernate.dev;
 
 import ru.akorsa.springdata.hibernate.config.SpringProperties;
 import ru.akorsa.springdata.hibernate.config.SpringUtils;
-import ru.akorsa.springdata.hibernate.service.ContactService;
 import ru.akorsa.springdata.hibernate.model.Contact;
 import ru.akorsa.springdata.hibernate.model.ContactTelDetail;
+import ru.akorsa.springdata.hibernate.service.ContactService;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: daveburke
+ * Date: 4/22/15
+ * Time: 3:32 PM
+ */
 public class SpringDevelopment {
+
+    // region Properties Demo
 
     SpringProperties springProperties;
     ContactService contactService;
 
-    public SpringDevelopment(SpringProperties springProperties,  ContactService contactService) {
+    public SpringDevelopment(SpringProperties springProperties,
+                             ContactService contactService)
+    {
         this.springProperties = springProperties;
         this.contactService = contactService;
     }
@@ -25,7 +35,11 @@ public class SpringDevelopment {
                 springProperties.getToken());
     }
 
-    public void addContact() {
+    // endregion
+
+    // region Add Contact
+
+    public void AddContact() {
         Contact contact = new Contact();
         contact.setFirstName("Michael");
         contact.setLastName("Jackson");
@@ -33,13 +47,18 @@ public class SpringDevelopment {
         ContactTelDetail contactTelDetail =
                 new ContactTelDetail("Home", "1111111111");
         contact.addContactTelDetail(contactTelDetail);
-        contactTelDetail = new ContactTelDetail("Mobile", "222222");
+        contactTelDetail = new ContactTelDetail("Mobile", "2222222222");
         contact.addContactTelDetail(contactTelDetail);
         contactService.updateContact(contact);
     }
 
+    // endregion
+
+    // region Hibernate Demos
+
     public void hibernateDemo() {
-        Contact contact = contactService.getContact(1L);
+
+        Contact contact = contactService.getContact(1l);
         SpringUtils.listContact("HIBERNATE CONTACT(1L)", contact);
 
         List<Contact> contacts = contactService.getContacts();
@@ -47,6 +66,7 @@ public class SpringDevelopment {
 
         contacts = contactService.getContactsWithDetail();
         listHbnContactsWithDetail(contacts);
+
     }
 
     private void listHbnContactsWithDetail(List<Contact> contacts) {
@@ -63,4 +83,7 @@ public class SpringDevelopment {
             System.out.println();
         }
     }
+
+    // endregion
+
 }

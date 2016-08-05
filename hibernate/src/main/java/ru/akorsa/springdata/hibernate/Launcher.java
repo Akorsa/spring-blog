@@ -1,10 +1,10 @@
 package ru.akorsa.springdata.hibernate;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.akorsa.springdata.hibernate.config.SpringHbnConfiguration;
 import ru.akorsa.springdata.hibernate.config.SpringProperties;
 import ru.akorsa.springdata.hibernate.dev.SpringDevelopment;
 import ru.akorsa.springdata.hibernate.service.ContactService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Launcher {
 
@@ -16,10 +16,12 @@ public class Launcher {
         ContactService contactService = (ContactService) ctx.getBean("hbnContactService");
         SpringProperties springProperties = ctx.getBean(SpringProperties.class);
 
-        SpringDevelopment springDevelopment = new SpringDevelopment(springProperties, contactService);
+        SpringDevelopment springDevelopment = new
+                SpringDevelopment(springProperties, contactService);
 
         springDevelopment.propertiesDemo();
         springDevelopment.hibernateDemo();
 
     }
+
 }

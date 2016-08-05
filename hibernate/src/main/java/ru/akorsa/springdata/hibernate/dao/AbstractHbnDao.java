@@ -1,4 +1,11 @@
 package ru.akorsa.springdata.hibernate.dao;
+/*
+ * Copyright (c) 2013 Manning Publications Co.
+ *
+ * Book: http://manning.com/wheeler/
+ * Blog: http://springinpractice.com/
+ * Code: https://github.com/springinpractice
+ */
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,9 +18,14 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
 
+// Don't put @Transactional here. It's not that it's inherently wrong--indeed it would allow us to avoid some pass-
+// though service bean methods--but using @Transactional causes Spring to create proxies, and recipe 10.3 assumes that
+// it has direct access to the DAOs. I don't think we're doing direct DAO injects into controllers anywhere. [WLW]
 
+/**
+ * @author Willie Wheeler (willie.wheeler@gmail.ru)
+ */
 public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
-
     @Autowired
     private SessionFactory sessionFactory;
     private Class<T> domainClass;
@@ -36,7 +48,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#create(java.lang.Object)
+     * @see ru.springinpractice.dao.Dao#create(java.lang.Object)
      */
     @Override
     public void create(T t) {
@@ -56,7 +68,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#get(java.io.Serializable)
+     * @see ru.springinpractice.dao.Dao#get(java.io.Serializable)
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -65,7 +77,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#load(java.io.Serializable)
+     * @see ru.springinpractice.dao.Dao#load(java.io.Serializable)
      */
     @Override
     @SuppressWarnings("unchecked")
@@ -81,7 +93,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#update(java.lang.Object)
+     * @see ru.springinpractice.dao.Dao#update(java.lang.Object)
      */
     @Override
     public void update(T t) {
@@ -89,7 +101,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#delete(java.lang.Object)
+     * @see ru.springinpractice.dao.Dao#delete(java.lang.Object)
      */
     @Override
     public void delete(T t) {
@@ -97,7 +109,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#deleteById(java.io.Serializable)
+     * @see ru.springinpractice.dao.Dao#deleteById(java.io.Serializable)
      */
     @Override
     public void deleteById(Serializable id) {
@@ -105,7 +117,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#deleteAll()
+     * @see ru.springinpractice.dao.Dao#deleteAll()
      */
     @Override
     public void deleteAll() {
@@ -115,7 +127,7 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#count()
+     * @see ru.springinpractice.dao.Dao#count()
      */
     @Override
     public long count() {
@@ -125,11 +137,10 @@ public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
     }
 
     /* (non-Javadoc)
-     * @see com.springinpractice.dao.Dao#exists(java.io.Serializable)
+     * @see ru.springinpractice.dao.Dao#exists(java.io.Serializable)
      */
     @Override
     public boolean exists(Serializable id) {
         return (get(id) != null);
     }
-
 }

@@ -1,5 +1,8 @@
 package ru.akorsa.springdata.hibernate.config;
 
+import ru.akorsa.springdata.hibernate.model.Contact;
+import ru.akorsa.springdata.hibernate.model.ContactTelDetail;
+import ru.akorsa.springdata.hibernate.model.Hobby;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +20,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ru.akorsa.springdata.hibernate.model.Contact;
-import ru.akorsa.springdata.hibernate.model.ContactTelDetail;
-import ru.akorsa.springdata.hibernate.model.Hobby;
 
 import javax.sql.DataSource;
 
