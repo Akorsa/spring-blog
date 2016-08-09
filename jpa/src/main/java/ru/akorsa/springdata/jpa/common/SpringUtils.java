@@ -1,6 +1,7 @@
 package ru.akorsa.springdata.jpa.common;
 
-import ru.akorsa.springdata.jpa.model.ContactEntity;
+import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.model.Contact;
 
 import java.util.List;
 
@@ -18,35 +19,66 @@ public class SpringUtils {
     }
 
 
-    public static void listContactEntities(String header, List<ContactEntity> contacts) {
+    public static void listContact(String header, Contact contact) {
 
-        System.out.println("\r\n" + header + " ------------------------------ ");
-        System.out.println();
-        contacts.forEach(System.out::println);
-        System.out.println();
-    }
-
-    public static void listContactEntity(String header, ContactEntity contact) {
         System.out.println("\r\n" + header + " ------------------------------ ");
         System.out.println();
         System.out.println(contact);
         System.out.println();
     }
 
+    public static void listContacts(String header, List<Contact> contacts) {
+        System.out.println("\r\n" + header + " ------------------------------ ");
+        System.out.println();
+        contacts.forEach(System.out::println);
+        System.out.println();
+    }
 
-    public static void listContactEntitiesWithDetail(List<ContactEntity> contacts) {
+    public static void listContactWithDetail(Contact contact) {
+        System.out.println("SINGLE CONTACT WITH DETAILS ---------------------------------");
+        System.out.println();
+        System.out.println(contact);
+        if (contact.getContactPhones() != null) {
+            contact.getContactPhones().forEach(System.out::println);
+        }
+        if (contact.getHobbies() != null) {
+            contact.getHobbies().forEach(System.out::println);
+        }
+        System.out.println();
+    }
+
+
+    public static void listContactsWithDetail(List<Contact> contacts) {
         System.out.println("LISTING ENTITIES WITH DETAILS ---------------------------------");
         System.out.println();
-        for (ContactEntity contact : contacts) {
+        for (Contact  contact : contacts) {
             System.out.println(contact);
-            if (contact.getContactTelDetailEntities() != null) {
-                contact.getContactTelDetailEntities().forEach(System.out::println);
+            if (contact.getContactPhones() != null) {
+                contact.getContactPhones().forEach(System.out::println);
             }
-            if (contact.getHobbyEntities() != null) {
-                contact.getHobbyEntities().forEach(System.out::println);
+            if (contact.getHobbies() != null) {
+                contact.getHobbies().forEach(System.out::println);
             }
             System.out.println();
         }
+    }
+
+    public static ContactDTO createContactDTO(Contact model) {
+        ContactDTO dto = new ContactDTO();
+
+        dto.setContactId(model.getContactId());
+        dto.setFirstName(model.getFirstName());
+        dto.setBirthDate(model.getBirthDate());
+        dto.setLastName("Goff");
+        dto.setEmail(model.getEmail());
+        if (model.getContactPhones() != null) {
+            model.getContactPhones().forEach(System.out::println);
+//            Set<ContactPhoneDTO> results = model.getContactPhones().stream().map(ContactPhoneDTO::new).collect(Collectors.toSet());
+//            dto.setContactPhones(results);
+
+            System.out.println(dto.toString());
+        }
+        return dto;
     }
 
 }

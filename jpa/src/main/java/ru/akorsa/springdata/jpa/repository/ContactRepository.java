@@ -1,12 +1,14 @@
 package ru.akorsa.springdata.jpa.repository;
 
-import ru.akorsa.springdata.jpa.model.ContactEntity;
 import org.springframework.data.repository.CrudRepository;
+import ru.akorsa.springdata.jpa.model.Contact;
 
 import java.util.List;
 
-public interface ContactRepository extends CrudRepository<ContactEntity, Long> {
-    List<ContactEntity> findByFirstName(String firstName);
-    List<ContactEntity> findByFirstNameAndLastName(String firstName, String lastName);
-    List<ContactEntity> findAllWithDetail();
+public interface ContactRepository extends CrudRepository<Contact, Long> {
+    List<Contact> findByFirstName(String firstName);
+    List<Contact> findByFirstNameAndLastName(String firstName, String lastName);
+    List<Contact> findAllWithDetail();
+    Contact findByEmail(String email);
+    Contact findByContactIdWithDetail(Long ID);
 }

@@ -1,10 +1,7 @@
 package ru.akorsa.springdata.jpa.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.AccessType;
 import org.springframework.stereotype.Component;
-import ru.akorsa.springdata.jpa.model.ContactEntity;
-import ru.akorsa.springdata.jpa.model.ContactTelDetailEntity;
 import ru.akorsa.springdata.jpa.service.ContactService;
 
 import java.util.List;
@@ -34,7 +31,7 @@ public class SpringUI {
     // region Add Contact
 
     public void AddContact() {
-        ContactEntity contact = new ContactEntity();
+       /* ContactEntity contact = new ContactEntity();
         contact.setFirstName("Michael");
         contact.setLastName("Jackson");
         java.util.Date utilDate = new java.util.Date();
@@ -43,7 +40,7 @@ public class SpringUI {
                 new ContactTelDetailEntity("Home", "1111111111");
         contact.addContactTelDetailEntity(contactTelDetail);
         contactTelDetail = new ContactTelDetailEntity("Mobile", "2222222222");
-        contact.addContactTelDetailEntity(contactTelDetail);
+        contact.addContactTelDetailEntity(contactTelDetail);*/
 //        contactService.save(contact);
     }
 
@@ -53,7 +50,7 @@ public class SpringUI {
 
 
     public void entityDemo() {
-        SpringUtils.listContactEntities("ENTITIES FIND ALL",
+        /*SpringUtils.listContactEntities("ENTITIES FIND ALL",
                 contactService.findAll());
         SpringUtils.listContactEntities("ENTITIES FIND BY FIRST NAME",
                 contactService.findByFirstName("Barry"));
@@ -61,16 +58,8 @@ public class SpringUI {
                 contactService.findByFirstNameAndLastName("Tad", "Grant"));
 
         List<ContactEntity> contacts = contactService.getContactsWithDetail();
-        SpringUtils.listContactEntitiesWithDetail(contacts);
-
+        SpringUtils.listContactEntitiesWithDetail(contacts);*/
+        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
     }
-
-
-    public void showContact(Long ID) {
-        ContactEntity contact = contactService.findById(ID);
-        System.out.println(contact.getFirstName());
-    }
-    // endregion
-
 
 }

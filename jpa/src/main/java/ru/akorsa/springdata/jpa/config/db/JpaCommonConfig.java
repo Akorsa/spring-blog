@@ -14,8 +14,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.hibernate.SessionFactory;
+import ru.akorsa.springdata.jpa.model.Contact;
+import ru.akorsa.springdata.jpa.model.ContactPhone;
+import ru.akorsa.springdata.jpa.model.Hobby;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -42,6 +46,16 @@ public abstract class JpaCommonConfig {
     @Qualifier(value = "jpaTransactionManager")
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
+    }
+
+    @Bean
+    public SessionFactory sessionFactory() {
+        return new LocalSessionFactoryBuilder(dataSource())
+                .scanPackages("com.nixmash.springdata.jpa")
+                .addAnnotatedClasses(Contact.class)
+                .addAnnotatedClasses(ContactPhone.class)
+                .addAnnotatedClasses(Hobby.class)
+                .buildSessionFactory();
     }
 
     @Bean

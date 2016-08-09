@@ -1,14 +1,19 @@
 package ru.akorsa.springdata.jpa.service;
 
-import ru.akorsa.springdata.jpa.model.ContactEntity;
+import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.model.Contact;
 
 import java.util.List;
 
 public interface ContactService {
-    List<ContactEntity> findAll();
-    List<ContactEntity> findByFirstName(String firstName);
-    List<ContactEntity> findByFirstNameAndLastName(String firstName, String lastName);
-    List<ContactEntity> getContactsWithDetail();
-    void save(ContactEntity contact);
-    ContactEntity findById(Long ID);
+    List<Contact> findAll();
+    List<Contact> findByFirstName(String firstName);
+    List<Contact> findByFirstNameAndLastName(String firstName, String lastName);
+    List<Contact> getContactsWithDetail();
+    void save(Contact contact);
+    public Contact update(ContactDTO updated) throws NotFoundException;
+
+    Contact findById(Long ID);
+    Contact getContactByEmail(String email);
+    Contact getContactByIdWithDetail(Long ID);
 }
