@@ -11,6 +11,22 @@ The app is based on Chapter #7 of Pro Spring, Fourth Edition from Apress, "Using
 
 *Implementations listed below by version are found in their corresponding branch, v0.0.1, v0.0.2, etc. The Master branch of this repo contains ongoing development and may not contain features in prior versions.*
 
+##v0.1.0##
+
+- Examples of Updating, Deleting and Adding records with focus on @OneToMany relationship handling
+- ContactDTO now containing Contact and ContactPhone Set
+- Builder pattern added to ContactPhone Entity class
+- Tests covering Contact updates, deletions and additions, on both contact and multiple contact phones
+- [Post: Flexible H2 Database Persistence For Testing With Gradle](http://nixmash.com/java/flexible-h2-database-persistence-for-testing-with-gradle/)
+- [Post: Adding a JPA Entity and its @OneToMany Children](http://nixmash.com/java/adding-a-jpa-entity-and-its-onetomany-children/)
+- [Post: Updating the Many in a JPA @OneToMany](http://nixmash.com/java/updating-the-many-in-a-jpa-onetomany/)
+
+##v0.0.9##
+
+- Several examples of Lazy Loading. See NixMash post [Approaches to JPA Lazy Loading](http://nixmash.com/java/approaches-to-jpa-lazy-loading/) for details
+- First pass at creating schema DTO objects for use in updating and creating data
+- Modified database schema to better adhere to database relationship best practices. Updates are reflected in Entities.
+
 ##v0.0.8##
 
 - h2database and mySQL JPA Data Configuration
@@ -84,8 +100,10 @@ The app is based on Chapter #7 of Pro Spring, Fourth Edition from Apress, "Using
 
 ##Installation##
 
-Run the setup.sql script in the /install directory to populate the database. Update Datasource connection properties in
-/resources/application.properties file. Build with gradle and run with gradle :bootRun.
+Run the _setup.sql_ script in the /doc/install directory to populate the database for using MySQL. Update Datasource connection
+properties in _/resources/META-INF/spring/mysql.properties_ file. Otherwise, the tests should fire up with a database.hbm2ddl.auto
+create-drop setting. The H2 create-data script is located in _/resources/db._  Build with gradle and run with gradle :bootRun or
+run tests with gradle :jpa:test.
 
 ##References##
 

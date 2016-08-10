@@ -4,7 +4,10 @@ import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.model.Contact;
+import ru.akorsa.springdata.jpa.model.ContactPhone;
+import ru.akorsa.springdata.jpa.repository.ContactPhoneRepository;
 import ru.akorsa.springdata.jpa.repository.ContactRepository;
 import ru.akorsa.springdata.jpa.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
+
+    @Autowired
+    private ContactPhoneRepository contactPhoneRepository;
 
     @PersistenceContext
     private EntityManager em;
@@ -61,7 +67,17 @@ public class ContactServiceImpl implements ContactService {
         return contactRepository.findByEmail(email);
     }
 
-    public void save(Contact contact) { contactRepository.save(contact); }
+    @Transactional(rollbackFor = NotFoundException.class)
+    @Override
+    public Contact deleteById(Long id) throws NotFoundException {
+        LOGGER.info("Deleting contact by id: {}",id);
+
+        Contact deleted = findById(id);
+        contactRepository.delete(deleted);
+
+        LOGGER.info("Deleted contact: {}", deleted);
+        return deleted;
+    }
 
     @Transactional(rollbackFor = NotFoundException.class)
     @Override
@@ -72,9 +88,48 @@ public class ContactServiceImpl implements ContactService {
 
         //Update the contact information
         found.update(updated.getFirstName(), updated.getLastName(), updated.getEmail());
-        //Update the address information
-//        found.updateAddress(updated.getStreetAddress(), updated.getPostCode(), updated.getPostOffice(), updated.getState(), updated.getCountry());
 
+        //Update the contact phone
+        if (found.getContactPhones() != null) {
+            for (ContactPhoneDTO contactPhoneDTO : updated.getContactPhones()) {
+                ContactPhone contactPhone = contactPhoneRepository.findByContactPhoneId(contactPhoneDTO.getContactPhoneId());
+                if (contactPhone != null) {
+                    contactPhone.update(contactPhoneDTO.getPhoneType(),contactPhoneDTO.getPhoneNumber());
+                }
+            }
+        }
         return found;
+    }
+
+    @Transactional
+    @Override
+    public Contact add(ContactDTO added) {
+        LOGGER.info("Adding new contact with information: {}", added);
+
+        //Creates an instance of a Contact by using the builder pattern
+        Contact contact = Contact.getBuilder(added.getFirstName(),
+                added.getLastName(), added.getEmail())
+                .birthDate(added.getBirthDate())
+                .build();
+
+        Contact saved = contactRepository.save(contact);
+
+        if(added.getContactPhones() != null) {
+            for (ContactPhoneDTO contactPhoneDTO : added.getContactPhones()) {
+                ContactPhone contactPhone = ContactPhone.getBuilder(saved,
+                        contactPhoneDTO.getPhoneType(),
+                        contactPhoneDTO.getPhoneNumber())
+                        .build();
+
+                contactPhoneRepository.save(contactPhone);
+            }
+        }
+        em.refresh(saved);
+        return saved;
+    }
+
+    @Transactional(value = "jpaTransactionManager", readOnly = true)
+    public List<ContactPhone> findContactPhonesByContactId(Long contactId) {
+        return contactPhoneRepository.findByContact_ContactId(contactId);
     }
 }

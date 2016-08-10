@@ -5,14 +5,44 @@ jar {
     }
 }
 
-
-task production << {
-    bootRun.systemProperty 'spring.profiles.active', 'production'
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/test'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
 }
 
+
+task serviceTests(type: Test, dependsOn: testClasses) {
+    include '**/*Service*'
+}
+
+task production << {
+    bootRun.systemProperty 'spring.profiles.active', 'mysql'
+}
+
+task showHome << {
+    println "${rootDir}"
+}
 
 bootRun {
     addResources = false
     systemProperty 'spring.profiles.active', 'mysql'
     main = 'ru.akorsa.springdata.jpa.Launcher'
+}
+
+task rmTestdb(type: Exec) {
+    commandLine "bash", "${rootDir}/doc/scripts/rmTestdb.sh"
 }

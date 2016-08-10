@@ -49,16 +49,6 @@ public abstract class JpaCommonConfig {
     }
 
     @Bean
-    public SessionFactory sessionFactory() {
-        return new LocalSessionFactoryBuilder(dataSource())
-                .scanPackages("com.nixmash.springdata.jpa")
-                .addAnnotatedClasses(Contact.class)
-                .addAnnotatedClasses(ContactPhone.class)
-                .addAnnotatedClasses(Hobby.class)
-                .buildSessionFactory();
-    }
-
-    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         logger.debug("\n\n************ {} ************\n\n",
                 getDatabaseDialect().getCanonicalName());
@@ -123,6 +113,10 @@ public abstract class JpaCommonConfig {
 
     public String getHbm2ddl() {
         return environment.getProperty("database.hbm2ddl.auto", "none");
+    }
+
+    public String getShowSql() {
+        return environment.getProperty("hibernate.showsql", "TRUE");
     }
 
     public String getHibernateCharSet() {

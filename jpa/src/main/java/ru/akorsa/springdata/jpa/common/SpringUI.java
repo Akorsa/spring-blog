@@ -16,7 +16,7 @@ public class SpringUI {
     ContactService contactService;
 
     public void init() {
-        propertiesDemo();
+        //propertiesDemo();
         entityDemo();
     }
 
@@ -36,12 +36,12 @@ public class SpringUI {
         contact.setLastName("Jackson");
         java.util.Date utilDate = new java.util.Date();
         contact.setBirthDate(new java.sql.Date(utilDate.getTime()));
-        ContactTelDetailEntity contactTelDetail =
-                new ContactTelDetailEntity("Home", "1111111111");
-        contact.addContactTelDetailEntity(contactTelDetail);
-        contactTelDetail = new ContactTelDetailEntity("Mobile", "2222222222");
-        contact.addContactTelDetailEntity(contactTelDetail);*/
-//        contactService.save(contact);
+              ContactPhone contactPhone =
+                new ContactPhone("Home", "1111111111");
+       contact.addContactPhone(contactPhone);
+        contactPhone = new ContactPhone("Mobile", "2222222222");
+       contact.addContactPhone(contactPhone);
+       contactService.save(contact);*/
     }
 
     // endregion
@@ -57,9 +57,22 @@ public class SpringUI {
         SpringUtils.listContactEntities("ENTITIES FIND BY FIRST AND LAST NAME",
                 contactService.findByFirstNameAndLastName("Tad", "Grant"));
 
-        List<ContactEntity> contacts = contactService.getContactsWithDetail();
-        SpringUtils.listContactEntitiesWithDetail(contacts);*/
-        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
+        //        SpringUtils.listContact("SINGLE CONTACT: ", contactService.getContactByEmail("Nam.nulla@pedenonummyut.edu"));
+       SpringUtils.listContactsWithDetail(contactService.getContactsWithDetail());
+
+       SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
+
+       SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));
+
+       SpringUtils.listContact("SINGLE CONTACT: ", contactService.getWithPhones(1L));
+
+       SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L));
+
+       try {
+           contactService.update(SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L)));
+       } catch (NotFoundException e) {
+           e.printStackTrace();
+       }*/
     }
 
 }
