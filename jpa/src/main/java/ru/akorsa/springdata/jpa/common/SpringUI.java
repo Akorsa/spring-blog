@@ -3,6 +3,7 @@ package ru.akorsa.springdata.jpa.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.akorsa.springdata.jpa.service.ContactService;
+import ru.akorsa.springdata.jpa.service.NotFoundException;
 
 import java.util.List;
 
@@ -73,6 +74,11 @@ public class SpringUI {
        } catch (NotFoundException e) {
            e.printStackTrace();
        }*/
+        try {
+            contactService.update(SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L)));
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

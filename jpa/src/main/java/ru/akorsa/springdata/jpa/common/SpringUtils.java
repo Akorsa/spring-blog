@@ -2,8 +2,10 @@ package ru.akorsa.springdata.jpa.common;
 
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
+import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 import ru.akorsa.springdata.jpa.model.Contact;
 import ru.akorsa.springdata.jpa.model.ContactPhone;
+import ru.akorsa.springdata.jpa.model.Hobby;
 
 import java.util.List;
 import java.util.Set;
@@ -67,28 +69,40 @@ public class SpringUtils {
         }
     }
 
-    public static ContactDTO contactToContactDTO(Contact model) {
+    public static ContactDTO contactToContactDTO(Contact contact) {
         ContactDTO dto = new ContactDTO();
 
-        dto.setContactId(model.getContactId());
-        dto.setFirstName(model.getFirstName());
-        dto.setBirthDate(model.getBirthDate());
-        dto.setLastName(model.getLastName());
-        dto.setEmail(model.getEmail());
-        if (model.getContactPhones() != null) {
-            Set<ContactPhone> contactPhones = model.getContactPhones();
-            contactPhones.stream()
-                    .filter(contactPhone -> contactPhone.getPhoneType().equals("Mobile"))
-                    .forEach(contactPhone -> contactPhone.setPhoneNumber("1-407-100-9999"));
-            Set<ContactPhoneDTO> results = contactPhones
-                    .stream()
-                    .map(ContactPhoneDTO::new)
-                    .collect(Collectors.toSet());
-            dto.setContactPhones(results);
-            results.forEach(System.out::println);
-            System.out.println(dto.toString());
+        dto.setContactId(contact.getContactId());
+        dto.setFirstName(contact.getFirstName());
+        dto.setLastName("Goof");
+        dto.setBirthDate(contact.getBirthDate());
+        dto.setEmail(contact.getEmail());
+        if (contact.getContactPhones() != null) {
+            dto.setContactPhones(contact.getContactPhones()
+            .stream()
+            .map(ContactPhoneDTO::new)
+            .collect(Collectors.toSet()));
+        }
+        if(contact.getHobbies() != null) {
+            dto.setHobbies(contact.getHobbies()
+            .stream()
+            .map(HobbyDTO::new)
+            .collect(Collectors.toSet()));
         }
         return dto;
+    }
+
+    public static HobbyDTO hobbyToHobbyDTO(Hobby hobby) {
+        HobbyDTO hobbyDTO = new HobbyDTO();
+        hobbyDTO.setHobbyId(hobby.getHobbyId());
+        hobbyDTO.setHobbyTitle(hobby.getHobbyTitle());
+        return hobbyDTO;
+    }
+
+    public static HobbyDTO createHobbyDTO(String hobbyTitle) {
+        HobbyDTO hobbyDTO = new HobbyDTO();
+        hobbyDTO.setHobbyTitle(hobbyTitle);
+        return hobbyDTO;
     }
 
 }
