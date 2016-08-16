@@ -13,11 +13,11 @@
         </encoder>
     </appender>
 
-    <logger name="com.nixmash.springdata" level="WARN" />
+    <logger name="com.nixmash.springdata" level="info" />
 
-    <include resource="logJpaToFile.xml" />
+    <!--<include resource="logJpaToFile.xml" />-->
 
-    <root level="WARN">
+    <root level="error">
         <appender-ref ref="console" />
     </root>
 

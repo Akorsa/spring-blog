@@ -63,22 +63,22 @@ public class SpringUI {
 
        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
 
-       SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));
+       SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));*/
 
-       SpringUtils.listContact("SINGLE CONTACT: ", contactService.getWithPhones(1L));
+       SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(1L));
 
-       SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L));
+       /*SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L));
 
        try {
            contactService.update(SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L)));
        } catch (NotFoundException e) {
            e.printStackTrace();
        }*/
-        try {
+        /*try {
             contactService.update(SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L)));
         } catch (NotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }

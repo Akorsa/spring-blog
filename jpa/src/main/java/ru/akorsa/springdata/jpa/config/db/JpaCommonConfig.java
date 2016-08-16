@@ -37,7 +37,7 @@ public abstract class JpaCommonConfig {
     protected Environment environment;
 
     @Value("#{ environment['entity.package'] }")
-    private String entityPackage = "ru.akorsa.springdata.jpa.model";
+    private String entityPackage;
 
     @Bean
     public abstract DataSource dataSource();
