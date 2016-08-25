@@ -3,6 +3,7 @@ package ru.akorsa.springdata.jpa.config;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -11,5 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackages = "ru.akorsa.springdata.jpa")
 @EnableJpaRepositories(basePackages = "ru.akorsa.springdata.jpa")
+@PropertySource("classpath:/META-INF/spring/application.properties")
 public class ApplicationConfig {
 }

@@ -25,7 +25,6 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:/META-INF/spring/application.properties")
 public abstract class JpaCommonConfig {
     private static final Logger logger = LoggerFactory.getLogger(JpaCommonConfig.class);
     public static final String UNDEFINED = "**UNDEFINED**";
