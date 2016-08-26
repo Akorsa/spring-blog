@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import ru.akorsa.springdata.jpa.common.ExtendedEmailValidator;
 import ru.akorsa.springdata.jpa.model.Contact;
 
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ public class ContactDTO {
     private Set<ContactPhoneDTO> contactPhones;
     private Set<HobbyDTO> hobbies;
 
-    @Email
+    @ExtendedEmailValidator
     @Length(max = Contact.MAX_LENGTH_EMAIL_ADDRESS)
     private String email;
 

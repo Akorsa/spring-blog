@@ -3,11 +3,13 @@ import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "contact_phones")
-public class ContactPhone {
+public class ContactPhone implements Serializable{
     private Long contactPhoneId;
     private String phoneType;
     private String phoneNumber;
@@ -16,6 +18,8 @@ public class ContactPhone {
 
     public static final int MAX_LENGTH_PHONE_TYPE = 20;
     public static final int MAX_LENGTH_PHONE_NUMBER = 20;
+
+    private static final long serialVersionUID = 8032497024653204603L;
 
     public ContactPhone() {}
 
@@ -63,29 +67,6 @@ public class ContactPhone {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactPhone that = (ContactPhone) o;
-
-        if (contactPhoneId != that.contactPhoneId) return false;
-        if (version != that.version) return false;
-        if (phoneType != null ? !phoneType.equals(that.phoneType) : that.phoneType != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        Long result = contactPhoneId;
-        result = 31 * result + (phoneType != null ? phoneType.hashCode() : 0);
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        return (int)((result >> 32) ^ result);
     }
 
     @ManyToOne

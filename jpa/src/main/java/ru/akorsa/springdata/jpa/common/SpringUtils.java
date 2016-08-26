@@ -69,6 +69,13 @@ public class SpringUtils {
         }
     }
 
+    public static List<ContactDTO> contactsToContactsDTOs(List<Contact> contacts) {
+        return contacts
+                .stream()
+                .map(SpringUtils :: contactToContactDTO)
+                .collect(Collectors.toList());
+    }
+
     public static ContactDTO contactToContactDTO(Contact contact) {
         ContactDTO dto = new ContactDTO();
 

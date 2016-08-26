@@ -1,6 +1,7 @@
 package ru.akorsa.springdata.jpa.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import static ru.akorsa.springdata.jpa.model.Contact.MAX_LENGTH_EMAIL_ADDRESS;
 
 @Entity
 @Table(name = "contacts")
-public class Contact {
+public class Contact implements Serializable {
     private Long contactId;
     private String firstName;
     private String lastName;
@@ -18,6 +19,8 @@ public class Contact {
     private int version;
     private Set<ContactPhone> contactPhones;
     private Set<Hobby> hobbies;
+
+    private static final long serialVersionUID = 447728202717826028L;
 
     public static final int MAX_LENGTH_EMAIL_ADDRESS = 100;
     public static final int MAX_LENGTH_FIRST_NAME = 40;
@@ -85,34 +88,6 @@ public class Contact {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Contact contact = (Contact) o;
-
-        if (contactId != contact.contactId) return false;
-        if (version != contact.version) return false;
-        if (firstName != null ? !firstName.equals(contact.firstName) : contact.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(contact.lastName) : contact.lastName != null) return false;
-        if (birthDate != null ? !birthDate.equals(contact.birthDate) : contact.birthDate != null) return false;
-        if (email != null ? !email.equals(contact.email) : contact.email != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        Long result = contactId;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + version;
-        return (int) ((result >> 32) ^ result);
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")

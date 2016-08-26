@@ -51,21 +51,21 @@ public class SpringUI {
 
 
     public void entityDemo() {
-        /*SpringUtils.listContactEntities("ENTITIES FIND ALL",
+        SpringUtils.listContacts("ENTITIES FIND ALL",
                 contactService.findAll());
-        SpringUtils.listContactEntities("ENTITIES FIND BY FIRST NAME",
+        SpringUtils.listContacts("ENTITIES FIND BY FIRST NAME",
                 contactService.findByFirstName("Barry"));
-        SpringUtils.listContactEntities("ENTITIES FIND BY FIRST AND LAST NAME",
+        SpringUtils.listContacts("ENTITIES FIND BY FIRST AND LAST NAME",
                 contactService.findByFirstNameAndLastName("Tad", "Grant"));
 
-        //        SpringUtils.listContact("SINGLE CONTACT: ", contactService.getContactByEmail("Nam.nulla@pedenonummyut.edu"));
-       SpringUtils.listContactsWithDetail(contactService.getContactsWithDetail());
+        SpringUtils.listContact("SINGLE CONTACT: ", contactService.getContactByEmail("Nam.nulla@pedenonummyut.edu"));
+        SpringUtils.listContactsWithDetail(contactService.getContactsWithDetail());
 
-       SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
+        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(2L));
 
-       SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));*/
+        SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));
 
-       SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(1L));
+        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(1L));
 
        /*SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L));
 

@@ -20,11 +20,19 @@ dependencies {
     compile "com.jayway.jsonpath:json-path-assert:$jsonPathAssertVersion"
     compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
 
+    compile "org.webjars:jquery:$jqueryWebjarVersion"
+    compile "org.webjars:bootstrap:$bootstrapWebjarVersion"
+    compile "org.webjars:bootswatch:$bootswatchWebjarVersion"
+
     testCompile project(':jpa').sourceSets.test.output
 }
 
+task production << {
+    bootRun.systemProperty 'spring.profiles.active', 'mysql'
+}
+
 bootRun {
-    addResources = false
-    systemProperty 'spring.profiles.active', 'mysql'
+    addResources = true
+ //   systemProperty 'spring.profiles.active', 'mysql'
     main = 'ru.akorsa.springdata.mvc.WebInitializer'
 }

@@ -33,7 +33,7 @@ task showHome << {
 
 bootRun {
     addResources = false
-    systemProperty 'spring.profiles.active', 'mysql'
+    // systemProperty 'spring.profiles.active', 'h2'
     main = 'ru.akorsa.springdata.jpa.Launcher'
 }
 
