@@ -20,7 +20,6 @@ import ru.akorsa.springdata.jpa.config.ApplicationConfig;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.enums.DataConfigProfile;
 import ru.akorsa.springdata.jpa.model.Contact;
-import ru.akorsa.springdata.jpa.model.ContactTestUtils;
 import ru.akorsa.springdata.jpa.service.ContactService;
 import ru.akorsa.springdata.mvc.config.WebConfig;
 import ru.akorsa.springdata.mvc.controller.ContactController;
@@ -71,7 +70,7 @@ public class ContactControllerTest {
     @Test
     public void homePageTest() throws Exception {
         mockMvc.perform(get("/"))
-                .andExpect(model().hasErrors())
+                .andExpect(model().hasNoErrors())
                 .andExpect(view().name("home"));
     }
 
@@ -128,18 +127,23 @@ public class ContactControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("redirect:/contact/1"));
 
-        mockMvc.perform(get("/list").param("lastname", "Rob"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("contacts"))
-                .andExpect(view().name("list"));
-
-        //TEST NO CONTACTS RETRIEVED
-
         mockMvc.perform(get("/list").param("lastName", "Bubba"))
                 .andExpect(status().isOk())
+                .andExpect(model()
+                        .attributeHasFieldErrorCode("contact",
+                                "lastName",
+                                "search.contact.notfound"))
+                .andExpect(view().name("search"));
+
+
+        // TEST EMPTY FORM - ALL CONTACTS RETRIEVED
+
+        mockMvc.perform(get("/list").param("lastName", ""))
+                .andExpect(status().isOk())
                 .andExpect(model().attributeExists("contacts"))
-                .andExpect(view().name("redirect:/contacts"))
+                .andExpect(view().name("redirect:/contacts/"))
                 .andExpect(model().attribute("contacts",
                         hasItems(allContacts.toArray())));
+
     }
 }

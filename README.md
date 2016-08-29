@@ -140,7 +140,7 @@ contain features found in prior versions.*
 
 ##Installation##
 
-+The application supports an H2 Profile (default) and a MySQL Profile. To run JPA Console app use **$gradle jpa:bootRun.** To run
+The application supports an H2 Profile (default) and a MySQL Profile. To run JPA Console app use **$gradle jpa:bootRun.** To run
 MVC Web app use **$gradle mvc:bootRun.** The Tomcat Server Port is set for **8084** (set in the MVC _application.properties_ file)
 so go to **http://localhost:8084** to view the app in your browser.
 
