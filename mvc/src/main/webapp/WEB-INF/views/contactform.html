@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      + xmlns:ddl="http://www.thymeleaf.org/dandelion"
-      + lang="en">
+      xmlns:ddl="http://www.thymeleaf.org/dandelion"
+      lang="en">
 
 <head>
     <div th:include="fragments/head :: head" th:remove="tag">Global Header</div>
@@ -97,9 +97,9 @@ $(function() {
                         <td>
                             <div class="controls" ddl:bundle-includes="jquery-ui-overcast">
                                 <input type="text"
-                                       + class="form-control"
-                                       + autocomplete="off"
-                                       + th:field="*{birthDate}"/>
+                                       class="form-control"
+                                       autocomplete="off"
+                                       th:field="*{birthDate}"/>
                                 <label class="control-label" th:errors="*{birthDate}">[error]</label>
                             </div>
                         </td>
@@ -109,9 +109,9 @@ $(function() {
                         <td>
                             <div class="form-actions pull-right">
                                 <input type="submit" class="btn btn-success"
-                                th:value="(${contact['new']} ? 'Add' : 'Update') + ' Contact'"/>
-                                <input type="button" th:onclick="'window.location.href=\'' + @{|/contacts/|} + '\'"
-                                class="btn btn-danger" value="Cancel">
+                                       th:value="(${contact['new']} ? 'Add' : 'Update') + ' Contact'"/>
+                                <input type="button" th:onclick="'window.location.href=\'' + @{|/contacts/|} + '\''"
+                                       class="btn btn-danger" value="Cancel"/>
                             </div>
                         </td>
                     </tr>
