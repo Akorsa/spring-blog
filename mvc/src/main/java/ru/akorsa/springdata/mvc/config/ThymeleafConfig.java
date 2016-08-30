@@ -1,5 +1,6 @@
 package ru.akorsa.springdata.mvc.config;
 
+import com.github.dandelion.thymeleaf.dialect.DandelionDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,9 @@ public class ThymeleafConfig {
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private DandelionDialect dandelionDialect;
+
     @Bean
     public TemplateResolver templateResolver() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
@@ -30,6 +34,7 @@ public class ThymeleafConfig {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setMessageSource(messageSource);
+        templateEngine.addDialect(dandelionDialect);
         return templateEngine;
     }
 

@@ -1,6 +1,5 @@
 package ru.akorsa.springdata.jpa.repository;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -25,5 +24,7 @@ public interface ContactRepository extends CrudRepository<Contact, Long> {
 
     @Query("select c from Contact c where c.lastName like %:lastName%")
     List<Contact> searchByLastName(@Param("lastName") String lastName);
+
+    List<Contact> findByLastNameIgnoreCaseContains(@Param("lastName") String lastName);
 
 }

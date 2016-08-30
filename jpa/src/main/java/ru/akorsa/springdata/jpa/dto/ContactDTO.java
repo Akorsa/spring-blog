@@ -1,13 +1,11 @@
 package ru.akorsa.springdata.jpa.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import ru.akorsa.springdata.jpa.common.ExtendedEmailValidator;
 import ru.akorsa.springdata.jpa.model.Contact;
 
-import javax.persistence.GeneratedValue;
 import java.util.Date;
 import java.util.Set;
 
@@ -30,6 +28,8 @@ public class ContactDTO {
     private String lastName;
 
     private Date birthDate;
+
+    private  boolean updateChildren = true;
 
     public ContactDTO() {
 
@@ -94,5 +94,17 @@ public class ContactDTO {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
+    }
+
+    public boolean isNew() {
+        return (this.contactId == null);
+    }
+
+    public boolean isUpdateChildren() {
+        return updateChildren;
+    }
+
+    public void setUpdateChildren(boolean updateChildren) {
+        this.updateChildren = updateChildren;
     }
 }

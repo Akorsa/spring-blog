@@ -20,9 +20,14 @@ dependencies {
     compile "com.jayway.jsonpath:json-path-assert:$jsonPathAssertVersion"
     compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
 
-    compile "org.webjars:jquery:$jqueryWebjarVersion"
-    compile "org.webjars:bootstrap:$bootstrapWebjarVersion"
-    compile "org.webjars:bootswatch:$bootswatchWebjarVersion"
+    compile "org.webjars:jquery:$jqueryVersion"
+    compile "org.webjars:bootstrap:$bootstrapVersion"
+    compile "org.webjars:bootswatch:$bootswatchVersion"
+
+    compile "org.webjars:jquery-ui:1.11.4"
+    compile "org.webjars:jquery-ui-themes:1.11.4"
+    compile "com.github.dandelion:datatables-thymeleaf:0.10.1"
+    compile "com.github.dandelion:dandelion-webjars:0.10.1"
 
     testCompile project(':jpa').sourceSets.test.output
 }

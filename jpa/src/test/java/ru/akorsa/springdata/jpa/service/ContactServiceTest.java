@@ -4,6 +4,7 @@ import ru.akorsa.springdata.jpa.config.ApplicationConfig;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 import ru.akorsa.springdata.jpa.enums.DataConfigProfile;
+import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
 import ru.akorsa.springdata.jpa.model.Contact;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,13 +39,13 @@ public class ContactServiceTest {
     private ContactService contactService;
 
     @Test
-    public void findByFirstName() throws NotFoundException {
+    public void findByFirstName() throws ContactNotFoundException {
         Contact contact = contactService.findContactById(1L);
         assertEquals(contact.getFirstName(), "Summer");
     }
 
     @Test
-    public void findByContactIdWithDetail() throws NotFoundException {
+    public void findByContactIdWithDetail() throws ContactNotFoundException {
         Contact contact = contactService.getContactByIdWithDetail(1L);
         assertTrue(contact.getContactPhones().size() == 2);
     }
@@ -70,7 +71,11 @@ public class ContactServiceTest {
         assertEquals(hobbyCount, 3);
 
         // Confirm Contact contains the new phone records
-        contact = contactService.findContactById(contact.getContactId());
+        try {
+            contact = contactService.findContactById(contact.getContactId());
+        } catch (ContactNotFoundException e) {
+            e.printStackTrace();
+        }
         phoneCount = contact.getContactPhones().size();
         assertEquals(phoneCount, 2);
 
@@ -81,7 +86,7 @@ public class ContactServiceTest {
     }
 
     @Test
-    public void deleteContact() throws NotFoundException {
+    public void deleteContact() throws ContactNotFoundException {
         List<Contact> contacts = contactService.findAll();
         int originalContactCount = contacts.size();
 
@@ -99,7 +104,7 @@ public class ContactServiceTest {
     }
 
     @Test
-    public void updateContact() throws NotFoundException {
+    public void updateContact() throws ContactNotFoundException {
 
         // Contact with ID=4 in H2Database Robin Sullivan, 2 Phones
         Contact contact = contactService.findContactById(4L);
@@ -144,7 +149,7 @@ public class ContactServiceTest {
 
     @Test
     public void addHobby()
-            throws NotFoundException {
+            throws ContactNotFoundException {
 
         List<Hobby> hobbies = contactService.findAllContacts();
         int originalHobbyCount = hobbies.size();
@@ -166,7 +171,7 @@ public class ContactServiceTest {
 
     @Test
     public void addHobbyToContact() throws
-            NotFoundException {
+            ContactNotFoundException {
         Contact contact = contactService.findContactById(5L);
         ContactDTO contactDTO = ContactTestUtils.contactToContactDTO(contact);
         assertEquals(contactDTO.getHobbies().size(), 2);
@@ -179,7 +184,7 @@ public class ContactServiceTest {
 
     @Test
     public void removeHobbyFromContact() throws
-            NotFoundException {
+            ContactNotFoundException {
 
         Contact contact = contactService.findContactById(1L);
         ContactDTO contactDTO = ContactTestUtils.contactToContactDTO(contact);

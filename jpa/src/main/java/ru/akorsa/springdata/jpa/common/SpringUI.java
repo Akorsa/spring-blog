@@ -3,9 +3,6 @@ package ru.akorsa.springdata.jpa.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.akorsa.springdata.jpa.service.ContactService;
-import ru.akorsa.springdata.jpa.service.NotFoundException;
-
-import java.util.List;
 
 @Component
 public class SpringUI {

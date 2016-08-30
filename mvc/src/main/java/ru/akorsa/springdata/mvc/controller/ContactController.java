@@ -2,47 +2,71 @@ package ru.akorsa.springdata.mvc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.sun.javafx.sg.prism.NGShape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.akorsa.springdata.jpa.common.SpringUtils;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
+import ru.akorsa.springdata.jpa.exceptions.UnknownResourceException;
 import ru.akorsa.springdata.jpa.model.Contact;
 import ru.akorsa.springdata.jpa.service.ContactService;
-import ru.akorsa.springdata.jpa.service.NotFoundException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static ru.akorsa.springdata.mvc.controller.ContactController.MODEL_ATTRIBUTE_CONTACT;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
+@SessionAttributes("contact")
 public class ContactController {
 
     private ContactService contactService;
     private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
 
-    protected static final String ADD_CONTACT_VIEW = "add";
+    protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_ADDED = "feedback.message.contact.added";
+    protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_UPDATED = "feedback.message.contact.updated";
+    protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_DELETED = "feedback.message.contact.deleted";
+
+    protected static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
+    protected static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
     protected static final String CONTACT_VIEW = "view";
     protected static final String CONTACT_LIST_VIEW = "list";
-    protected static final String UPDATE_CONTACT_VIEW = "update";
+    protected static final String CONTACT_FORM_VIEW = "contactform";
     protected static final String SEARCH_VIEW = "search";
     public static final String HOME_VIEW = "home";
 
     protected static final String MODEL_ATTRIBUTE_CONTACT = "contact";
     protected static final String MODEL_ATTRIBUTE_CONTACTS = "contacts";
+    protected static final String PARAMETER_CONTACT_ID = "id";
 
     @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
+    }
+
+    @Resource
+    private MessageSource messageSource;
+
+    // remember non-editable domain object values to send to service layer
+    @InitBinder
+    public void setAllowedFields(WebDataBinder dataBinder) {
+        dataBinder.setDisallowedFields("id");
     }
 
     @ModelAttribute(MODEL_ATTRIBUTE_CONTACTS)
@@ -50,9 +74,16 @@ public class ContactController {
         return contactService.findAll();
     }
 
+    @RequestMapping(value = {"{path:(?!webjars|static).*$}",
+            "{path:(?!webjars|static).*$}/**"}, headers = "Accept=text/html")
+    public void unknown() {
+        throw new UnknownResourceException();
+    }
+
     @RequestMapping(value = "/contact/json/{id}", method = GET)
-    public @ResponseBody
-    ContactDTO contactById(@PathVariable Long id) {
+    public
+    @ResponseBody
+    ContactDTO contactById(@PathVariable Long id) throws ContactNotFoundException {
         Contact contact = contactService.findContactById(id);
         ObjectMapper jacksonMapper = new ObjectMapper();
         jacksonMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
@@ -60,8 +91,34 @@ public class ContactController {
         return SpringUtils.contactToContactDTO(contact);
     }
 
-    @RequestMapping(value = "contact/{id}", method = GET)
-    public String showContactPage(@PathVariable("id") Long id, Model model) throws NotFoundException {
+    @RequestMapping(value = "/contact/new", method = GET)
+    public String initAddContactForm(Model model) {
+        Contact contact = new Contact();
+        model.addAttribute(contact);
+        return CONTACT_FORM_VIEW;
+    }
+
+    @RequestMapping(value = "/contact/new", method = POST)
+    public String addContact(@Valid Contact contact, BindingResult result,
+                             SessionStatus status, RedirectAttributes attributes) {
+        if (result.hasErrors()) {
+            return CONTACT_FORM_VIEW;
+        } else {
+            ContactDTO contactDTO = SpringUtils.contactToContactDTO(contact);
+            Contact added = contactService.add(contactDTO);
+            logger.info("Added contact with information: {}", added);
+            status.setComplete();
+
+            addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_CONTACT_ADDED,
+                    added.getFirstName(), added.getLastName());
+
+            return "redirect:/contacts/";
+        }
+    }
+
+    @RequestMapping(value = "/contact/{contactId}", method = GET)
+    public String contactDisplayPage(@PathVariable("contactId") Long id, Model model)
+            throws ContactNotFoundException {
         logger.info("Showing contact page for contact with id: {}", id);
 
         Contact found = contactService.findContactById(id);
@@ -69,6 +126,39 @@ public class ContactController {
 
         model.addAttribute(MODEL_ATTRIBUTE_CONTACT, found);
         return CONTACT_VIEW;
+    }
+
+    @RequestMapping(value = "/contact/update/{contactId}", method = GET)
+    public String contactEditPage(@PathVariable("contactId") Long id, Model model)
+            throws ContactNotFoundException {
+        logger.info("Showing contact update page for contact with: {}", id);
+
+        Contact found = contactService.getContactByIdWithDetail(id);
+        logger.info("Found contact: {}", found);
+
+        model.addAttribute(MODEL_ATTRIBUTE_CONTACT, found);
+        return CONTACT_FORM_VIEW;
+    }
+
+    @RequestMapping(value = "/contact/update/{contactId}", method = POST)
+    public String updateContact(@Valid Contact contact, BindingResult result,
+                                SessionStatus status, RedirectAttributes attributes)
+            throws ContactNotFoundException {
+        if (result.hasErrors()) {
+            return CONTACT_FORM_VIEW;
+        } else {
+            ContactDTO updated = SpringUtils.contactToContactDTO(contact);
+            updated.setUpdateChildren(false);
+            this.contactService.update(updated);
+            status.setComplete();
+
+            attributes.addAttribute(PARAMETER_CONTACT_ID, updated.getContactId());
+            addFeedbackMessage(attributes,
+                    FEEDBACK_MESSAGE_KEY_CONTACT_UPDATED,
+                    updated.getFirstName(), updated.getLastName());
+
+            return "redirect:/contacts";
+        }
     }
 
     @RequestMapping(value = "/contacts", method = GET)
@@ -93,7 +183,7 @@ public class ContactController {
                                   Model model, HttpSession session) {
         Collection<Contact> results = null;
 
-        if(StringUtils.isEmpty(contact.getLastName())) {
+        if (StringUtils.isEmpty(contact.getLastName())) {
             return "redirect:/contacts/";
         } else {
             results = this.contactService.searchByLastName(contact.getLastName());
@@ -102,7 +192,7 @@ public class ContactController {
         if (results.size() < 1) {
             //no contacts found
             result.rejectValue("lastName", "search.contact.notfound",
-                    new Object[] {contact.getLastName()}, "not found");
+                    new Object[]{contact.getLastName()}, "not found");
             return SEARCH_VIEW;
         }
 
@@ -117,6 +207,19 @@ public class ContactController {
             contact = results.iterator().next();
             return "redirect:/contact/" + contact.getContactId();
         }
+    }
+
+    private void addFeedbackMessage(RedirectAttributes model, String code, Object... params) {
+        logger.info("Adding feedback message with code: {} and params: {}", code, params);
+        String localizedFeedbackMessage = getMessage(code, params);
+        logger.info("Localized message is: {}", localizedFeedbackMessage);
+        model.addFlashAttribute(FLASH_MESSAGE_KEY_FEEDBACK, localizedFeedbackMessage);
+    }
+
+    private String getMessage(String code, Object... params) {
+        Locale current = LocaleContextHolder.getLocale();
+        logger.info("Current locale is {}", current);
+        return messageSource.getMessage(code, params, current);
     }
 
 }

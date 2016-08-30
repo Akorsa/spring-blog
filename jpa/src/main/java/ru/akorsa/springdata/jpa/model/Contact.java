@@ -1,12 +1,15 @@
 package ru.akorsa.springdata.jpa.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.core.style.ToStringCreator;
+import ru.akorsa.springdata.jpa.common.ExtendedEmailValidator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
-import static ru.akorsa.springdata.jpa.model.Contact.MAX_LENGTH_EMAIL_ADDRESS;
 
 @Entity
 @Table(name = "contacts")
@@ -25,6 +28,11 @@ public class Contact implements Serializable {
     public static final int MAX_LENGTH_EMAIL_ADDRESS = 100;
     public static final int MAX_LENGTH_FIRST_NAME = 40;
     public static final int MAX_LENGTH_LAST_NAME = 40;
+
+    @Transient
+    public boolean isNew() {
+        return (this.contactId == null);
+    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -71,6 +79,8 @@ public class Contact implements Serializable {
     }
 
     @Basic
+    @ExtendedEmailValidator
+    @Length(max = Contact.MAX_LENGTH_EMAIL_ADDRESS)
     @Column(name = "email", nullable = false, insertable = true, updatable = true)
     public String getEmail() {
         return email;
@@ -121,17 +131,22 @@ public class Contact implements Serializable {
     }
 
     public String toString() {
-        return "Contact - Id: " + contactId + ", First name: " + firstName
-                + ", Last name: " + lastName +
-                ", Email: " + email +
-                ", Birthday: " + birthDate;
+        return new ToStringCreator(this)
+                .append("id", this.getContactId())
+                .append("new", this.isNew())
+                .append("lastName", this.getLastName())
+                .append("firstName", this.getFirstName())
+                .append("email", this.getEmail())
+                .append("birthDate", this.getBirthDate())
+                .toString();
     }
 
 
-    public void update(final String firstName, final String lastName, final String emailAddress) {
+    public void update(final String firstName, final String lastName, final String emailAddress, Date birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = emailAddress;
+        this.birthDate = birthDate;
     }
 
     public static Builder getBuilder(String firstName, String lastName, String email) {

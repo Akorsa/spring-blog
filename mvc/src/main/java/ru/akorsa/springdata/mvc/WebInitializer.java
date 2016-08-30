@@ -1,14 +1,13 @@
 package ru.akorsa.springdata.mvc;
 
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
-import ru.akorsa.springdata.mvc.config.WebConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.context.annotation.Import;
+import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+import ru.akorsa.springdata.mvc.config.WebConfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,6 +33,9 @@ public class WebInitializer extends SpringBootServletInitializer {
         //Loading application context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(WebConfig.class);
+
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(rootContext);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
 
         //Dispatcher servlet
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(rootContext));

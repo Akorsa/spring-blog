@@ -1,13 +1,28 @@
 spring-data
 ==========================
 
-This project demonstrates configuration and various uses of Spring Data JPA, Hibernate and MVC. It accompanies blog posts at
-http://akorsa.ru on various aspects of the application and are listed below in their accompanying implementation version.
+This project demonstrates configuration and various uses of Spring Data, Spring Web MVC and Thymeleaf. It accompanies blog posts at
+http://akorsa.ru which are listed below in their accompanying implementation version.
 
 ##Implemented##
 
 *Implementations listed below by version are found in their corresponding branch, v0.0.1, v0.0.2, etc. Recent branches may not
 contain features found in prior versions.*
+
+##v0.1.5##
+
+- Multi-use Contact Add/Update Form
+- Fadeout Feedback Messages on Contact Add/Update with jQuery and Handlebars
+- Using Dandelion with Asset Bundling to load jQuery-UI datePicker and theme
+- Custom Favicon
+- Custom Exception Handling and all supporting Tests
+- [Post: Fadeout Feedback Messages in Spring MVC](http://nixmash.com/java/fadeout-feedback-messages-in-spring-mvc/)
+- [Post: Java Dates, Dandelion, Thymeleaf, Hibernate and Spring](http://nixmash.com/java/java-dates-dandelion-thymeleaf-hibernate-and-spring/)
+- [Post: Using Dandelion with Spring Boot and Thymeleaf](http://nixmash.com/java/using-dandelion-with-spring-boot-and-thymeleaf/)
+- [Post: Testing for 404 and Custom Exceptions in Spring MVC](http://nixmash.com/java/testing-for-404-and-custom-exceptions-in-spring-mvc/)
+- [Post: Custom 404 Exception Handling in Spring MVC](http://nixmash.com/java/custom-404-exception-handling-in-spring-mvc/)
+- [Post: Including Webjars in IntelliJ Tomcat WAR Artifact](http://nixmash.com/java/including-webjars-in-intellij-tomcat-war-artifact/)
+- [Post: Using Your Favorite Favicon in Spring MVC](http://nixmash.com/java/using-for-favorite-favicon-in-spring-mvc/)
 
 ##v0.1.4##
 

@@ -3,9 +3,13 @@ package ru.akorsa.springdata.jpa.service.impl;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
+import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
 import ru.akorsa.springdata.jpa.model.Contact;
 import ru.akorsa.springdata.jpa.model.ContactPhone;
 import ru.akorsa.springdata.jpa.model.Hobby;
@@ -13,10 +17,6 @@ import ru.akorsa.springdata.jpa.repository.ContactPhoneRepository;
 import ru.akorsa.springdata.jpa.repository.ContactRepository;
 import ru.akorsa.springdata.jpa.repository.HobbyRepository;
 import ru.akorsa.springdata.jpa.service.ContactService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import ru.akorsa.springdata.jpa.service.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -58,7 +58,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Transactional(value = "jpaTransactionManager", readOnly = true)
     public List<Contact> searchByLastName(String lastName) {
-        return contactRepository.searchByLastName(lastName);
+        return contactRepository.findByLastNameIgnoreCaseContains(lastName);
     }
 
     @Transactional(value = "jpaTransactionManager", readOnly = true)
@@ -72,15 +72,26 @@ public class ContactServiceImpl implements ContactService {
     }
 
 
-    public Contact findContactById(Long ID) { return contactRepository.findOne(ID); }
+    public Contact findContactById(Long ID) throws ContactNotFoundException {
+
+        LOGGER.info("Finding contact by id: {}", ID);
+
+        Contact found = contactRepository.findOne(ID);
+
+        if (found == null) {
+            LOGGER.info("No contact found with id: {}", ID);
+            throw new ContactNotFoundException("No contact found with id: " + ID);
+        }
+        return found;
+    }
 
     public Contact getContactByEmail(String email) {
         return contactRepository.findByEmail(email);
     }
 
-    @Transactional(rollbackFor = NotFoundException.class)
+    @Transactional(rollbackFor = ContactNotFoundException.class)
     @Override
-    public Contact deleteById(Long id) throws NotFoundException {
+    public Contact deleteById(Long id) throws ContactNotFoundException {
         LOGGER.info("Deleting contact by id: {}",id);
 
         Contact deleted = findContactById(id);
@@ -90,44 +101,46 @@ public class ContactServiceImpl implements ContactService {
         return deleted;
     }
 
-    @Transactional(rollbackFor = NotFoundException.class)
+    @Transactional(rollbackFor = ContactNotFoundException.class)
     @Override
-    public Contact update(ContactDTO contactDTO) throws NotFoundException {
+    public Contact update(ContactDTO contactDTO) throws ContactNotFoundException {
         LOGGER.info("Updating contact with information: {}", contactDTO);
 
         Contact found = findContactById(contactDTO.getContactId());
 
         //Update the contact information
-        found.update(contactDTO.getFirstName(), contactDTO.getLastName(), contactDTO.getEmail());
+        found.update(contactDTO.getFirstName(), contactDTO.getLastName(), contactDTO.getEmail(), contactDTO.getBirthDate());
 
         //Update the contact phone
-        if (found.getContactPhones() != null) {
-            for (ContactPhoneDTO contactPhoneDTO : contactDTO.getContactPhones()) {
-                ContactPhone contactPhone = contactPhoneRepository.findByContactPhoneId(contactPhoneDTO.getContactPhoneId());
-                if (contactPhone != null) {
-                    contactPhone.update(contactPhoneDTO.getPhoneType(),contactPhoneDTO.getPhoneNumber());
+        if (contactDTO.isUpdateChildren()) {
+            if (found.getContactPhones() != null) {
+                for (ContactPhoneDTO contactPhoneDTO : contactDTO.getContactPhones()) {
+                    ContactPhone contactPhone = contactPhoneRepository.findByContactPhoneId(contactPhoneDTO.getContactPhoneId());
+                    if (contactPhone != null) {
+                        contactPhone.update(contactPhoneDTO.getPhoneType(), contactPhoneDTO.getPhoneNumber());
+                    }
                 }
             }
-        }
 
-        if (contactDTO.getHobbies() != null) {
-            saveNewHobbiesToDatabase(contactDTO);
-        }
+            if (contactDTO.getHobbies() != null) {
+                saveNewHobbiesToDatabase(contactDTO);
+            }
 
-        if (contactDTO.getHobbies() != null) {
-            for (HobbyDTO hobbyDTO : contactDTO.getHobbies()) {
-                Hobby hobby = hobbyRepository.findByHobbyTitleIgnoreCase(hobbyDTO.getHobbyTitle());
+            if (contactDTO.getHobbies() != null) {
+                for (HobbyDTO hobbyDTO : contactDTO.getHobbies()) {
+                    Hobby hobby = hobbyRepository.findByHobbyTitleIgnoreCase(hobbyDTO.getHobbyTitle());
 
-                if (!found.getHobbies().contains(hobby))
-                    found.getHobbies().add(hobby);
+                    if (!found.getHobbies().contains(hobby))
+                        found.getHobbies().add(hobby);
+                }
             }
         }
         return found;
     }
 
-    @Transactional(rollbackFor = NotFoundException.class)
+    @Transactional(rollbackFor = ContactNotFoundException .class)
     @Override
-    public Contact removeHobby(ContactDTO contactDTO, Long hobbyId) throws NotFoundException {
+    public Contact removeHobby(ContactDTO contactDTO, Long hobbyId) throws ContactNotFoundException  {
         LOGGER.info("Removing contact hobby with information:{}", contactDTO);
 
         Contact found = findContactById(contactDTO.getContactId());
@@ -194,9 +207,9 @@ public class ContactServiceImpl implements ContactService {
 
     }
 
-    @Transactional(rollbackFor = NotFoundException.class)
+    @Transactional(rollbackFor = ContactNotFoundException .class)
     @Override
-    public Hobby updateHobbyTitle(HobbyDTO hobbyDto) throws NotFoundException {
+    public Hobby updateHobbyTitle(HobbyDTO hobbyDto) throws ContactNotFoundException  {
         LOGGER.info("Updating hobby with information: {}", hobbyDto);
 
         Hobby found = hobbyRepository.findOne(hobbyDto.getHobbyId());
