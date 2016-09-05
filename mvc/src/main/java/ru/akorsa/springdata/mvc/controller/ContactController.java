@@ -49,7 +49,7 @@ public class ContactController {
     protected static final String CONTACT_LIST_VIEW = "list";
     protected static final String CONTACT_FORM_VIEW = "contactform";
     protected static final String SEARCH_VIEW = "search";
-    public static final String HOME_VIEW = "home";
+    protected static final String HOME_VIEW = "home";
 
     protected static final String MODEL_ATTRIBUTE_CONTACT = "contact";
     protected static final String MODEL_ATTRIBUTE_CONTACTS = "contacts";
@@ -174,7 +174,7 @@ public class ContactController {
 
     @RequestMapping(value = "/search", method = GET)
     public String search(Model model) {
-        model.addAttribute(MODEL_ATTRIBUTE_CONTACT, new ContactDTO());
+        model.addAttribute(MODEL_ATTRIBUTE_CONTACT, new Contact());
         return SEARCH_VIEW;
     }
 
@@ -190,7 +190,7 @@ public class ContactController {
         }
 
         if (results.size() < 1) {
-            //no contacts found
+            // no contacts found
             result.rejectValue("lastName", "search.contact.notfound",
                     new Object[]{contact.getLastName()}, "not found");
             return SEARCH_VIEW;
@@ -199,7 +199,7 @@ public class ContactController {
         session.setAttribute("searchLastName", contact.getLastName());
 
         if (results.size() > 1) {
-            //multiple contacts found
+            // multiple contacts found
             model.addAttribute(MODEL_ATTRIBUTE_CONTACTS, results);
             return CONTACT_LIST_VIEW;
         } else {
