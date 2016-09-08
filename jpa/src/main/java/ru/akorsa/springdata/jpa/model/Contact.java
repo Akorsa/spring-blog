@@ -2,7 +2,7 @@ package ru.akorsa.springdata.jpa.model;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.core.style.ToStringCreator;
-import ru.akorsa.springdata.jpa.common.ExtendedEmailValidator;
+import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import javax.persistence.*;
 import java.io.Serializable;

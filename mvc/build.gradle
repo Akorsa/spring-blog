@@ -13,31 +13,43 @@ sourceSets {
     }
 }
 
+configurations {
+        providedRuntime
+    }
+
 dependencies {
     compile project(":jpa")
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "com.jayway.restassured:json-path:$jsonPathVersion"
     compile "com.jayway.jsonpath:json-path-assert:$jsonPathAssertVersion"
     compile "org.thymeleaf:thymeleaf-spring4:$thymeleafVersion"
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity3:2.1.2.RELEASE'
 
+    compile 'org.webjars:webjars-locator:0.27'
+    compile 'org.webjars:webjars-locator-core:0.27'
     compile "org.webjars:jquery:$jqueryVersion"
     compile "org.webjars:bootstrap:$bootstrapVersion"
     compile "org.webjars:bootswatch:$bootswatchVersion"
 
     compile "org.webjars:jquery-ui:1.11.4"
     compile "org.webjars:jquery-ui-themes:1.11.4"
-    compile "com.github.dandelion:datatables-thymeleaf:0.10.1"
-    compile "com.github.dandelion:dandelion-webjars:0.10.1"
+
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.6.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
 
     testCompile project(':jpa').sourceSets.test.output
 }
 
 task production << {
-    bootRun.systemProperty 'spring.profiles.active', 'mysql'
+    //bootRun.systemProperty 'spring.profiles.active', 'mysql'
 }
 
 bootRun {
     addResources = true
  //   systemProperty 'spring.profiles.active', 'mysql'
+    systemProperty 'server.port', '8084'
+    systemProperty 'spring.profiles.active', 'h2'
     main = 'ru.akorsa.springdata.mvc.WebInitializer'
 }

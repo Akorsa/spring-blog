@@ -4,11 +4,10 @@ import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 import ru.akorsa.springdata.jpa.model.Contact;
-import ru.akorsa.springdata.jpa.model.ContactPhone;
 import ru.akorsa.springdata.jpa.model.Hobby;
+import ru.akorsa.springdata.jpa.model.User;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -57,7 +56,7 @@ public class SpringUtils {
     public static void listContactsWithDetail(List<Contact> contacts) {
         System.out.println("LISTING ENTITIES WITH DETAILS ---------------------------------");
         System.out.println();
-        for (Contact  contact : contacts) {
+        for (Contact contact : contacts) {
             System.out.println(contact);
             if (contact.getContactPhones() != null) {
                 contact.getContactPhones().forEach(System.out::println);
@@ -69,10 +68,32 @@ public class SpringUtils {
         }
     }
 
+    public static void listUsersWithDetail(List<User> users) {
+        System.out.println("LISTING ENTITIES WITH DETAILS ---------------------------------");
+        System.out.println();
+        for (User user : users) {
+            System.out.println(user);
+            if (user.getAuthorities() != null) {
+                user.getAuthorities().forEach(System.out::println);
+            }
+            //            if (user.getUserProfile() != null) {
+            //                System.out.println(user.getUserProfile());
+            //            }
+            System.out.println();
+        }
+    }
+
+    public static void listUser(String header, User user) {
+        System.out.println("\r\n" + header + " ------------------------------ ");
+        System.out.println();
+        System.out.println(user);
+        System.out.println();
+    }
+
     public static List<ContactDTO> contactsToContactsDTOs(List<Contact> contacts) {
         return contacts
                 .stream()
-                .map(SpringUtils :: contactToContactDTO)
+                .map(SpringUtils::contactToContactDTO)
                 .collect(Collectors.toList());
     }
 
@@ -86,15 +107,15 @@ public class SpringUtils {
         dto.setEmail(contact.getEmail());
         if (contact.getContactPhones() != null) {
             dto.setContactPhones(contact.getContactPhones()
-            .stream()
-            .map(ContactPhoneDTO::new)
-            .collect(Collectors.toSet()));
+                    .stream()
+                    .map(ContactPhoneDTO::new)
+                    .collect(Collectors.toSet()));
         }
-        if(contact.getHobbies() != null) {
+        if (contact.getHobbies() != null) {
             dto.setHobbies(contact.getHobbies()
-            .stream()
-            .map(HobbyDTO::new)
-            .collect(Collectors.toSet()));
+                    .stream()
+                    .map(HobbyDTO::new)
+                    .collect(Collectors.toSet()));
         }
         return dto;
     }

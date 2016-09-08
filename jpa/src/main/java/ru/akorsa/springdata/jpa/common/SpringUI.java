@@ -8,7 +8,7 @@ import ru.akorsa.springdata.jpa.service.ContactService;
 public class SpringUI {
 
     @Autowired
-    SpringProperties springProperties;
+    ApplicationSettings applicationSettings;
 
     @Autowired
     ContactService contactService;
@@ -20,8 +20,8 @@ public class SpringUI {
 
     public void propertiesDemo() {
         SpringUtils.printProperty(
-                "springProperties.getToken()",
-                springProperties.getToken());
+                "ApplicationSettings.getIsDemoSite()",
+                applicationSettings.getIsDemoSite().toString());
     }
 
     // endregion
@@ -48,7 +48,7 @@ public class SpringUI {
 
 
     public void entityDemo() {
-        SpringUtils.listContacts("ENTITIES FIND ALL",
+        /*SpringUtils.listContacts("ENTITIES FIND ALL",
                 contactService.findAll());
         SpringUtils.listContacts("ENTITIES FIND BY FIRST NAME",
                 contactService.findByFirstName("Barry"));
@@ -62,7 +62,7 @@ public class SpringUI {
 
         SpringUtils.listContacts("FIND BY FIRST NAME", contactService.findByFirstName("Summer"));
 
-        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(1L));
+        SpringUtils.listContactWithDetail(contactService.getContactByIdWithDetail(1L));*/
 
        /*SpringUtils.contactToContactDTO(contactService.getContactByIdWithDetail(2L));
 

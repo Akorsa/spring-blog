@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.akorsa.springdata.jpa.common.SpringUtils;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
@@ -23,8 +24,10 @@ import ru.akorsa.springdata.jpa.model.Contact;
 import ru.akorsa.springdata.jpa.service.ContactService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -43,8 +46,8 @@ public class ContactController {
     protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_UPDATED = "feedback.message.contact.updated";
     protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_DELETED = "feedback.message.contact.deleted";
 
-    protected static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
-    protected static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
+    public static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
+    public static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
     protected static final String CONTACT_VIEW = "view";
     protected static final String CONTACT_LIST_VIEW = "list";
     protected static final String CONTACT_FORM_VIEW = "contactform";
@@ -74,8 +77,8 @@ public class ContactController {
         return contactService.findAll();
     }
 
-    @RequestMapping(value = {"{path:(?!webjars|static).*$}",
-            "{path:(?!webjars|static).*$}/**"}, headers = "Accept=text/html")
+    @RequestMapping(value = {"{path:(?!webjars|static|console).*$}",
+            "{path:(?!webjars|static|console).*$}/**"}, headers = "Accept=text/html")
     public void unknown() {
         throw new UnknownResourceException();
     }
@@ -161,6 +164,15 @@ public class ContactController {
         }
     }
 
+    @RequestMapping(value = "/login", method = GET)
+    public String login(HttpServletRequest request, Model model) {
+        if (request.getUserPrincipal() != null) {
+            return "redirect:/contacts";
+        } else {
+            return "login";
+        }
+    }
+
     @RequestMapping(value = "/contacts", method = GET)
     public String showContactsPage(Model model) {
         logger.info("Showing all contacts page");
@@ -173,7 +185,7 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/search", method = GET)
-    public String search(Model model) {
+    public String search(Model model, HttpServletRequest request) {
         model.addAttribute(MODEL_ATTRIBUTE_CONTACT, new Contact());
         return SEARCH_VIEW;
     }
@@ -220,6 +232,15 @@ public class ContactController {
         Locale current = LocaleContextHolder.getLocale();
         logger.info("Current locale is {}", current);
         return messageSource.getMessage(code, params, current);
+    }
+
+    @RequestMapping(value = "/403", method = GET)
+    public ModelAndView accessDenied(Principal user) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("errortitle", "Not Authorized");
+        mav.addObject("errorbody", "You are not authorized to view this page");
+        mav.setViewName("403");
+        return mav;
     }
 
 }

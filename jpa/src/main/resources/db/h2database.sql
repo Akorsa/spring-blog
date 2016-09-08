@@ -1,3 +1,33 @@
+------------------------------------------------------------
+-- Users
+------------------------------------------------------------
+
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (1, 'admin@aol.com', 'admin', '$2a$08$G6A3V6WnDxK6DP2LXAZyk.0f.ey1419gqet1ljya7JQAyd7ZrkY9C', 'Admin', 'Jones', true, false, false, false);
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (2, 'user@aol.com', 'user', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'User', 'Charlie', true, false, false, false);
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (3, 'keith@aol.com', 'keith', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'Keith', 'Obannon', true, false, false, false);
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (4, 'erwin@aol.com', 'erwin', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'Erwin', 'Lapote', true, false, false, false);
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (5, 'jeremy@aol.com', 'jeremy', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'Jeremy', 'Sloan', true, false, false, false);
+INSERT INTO users (id, email, username, password, firstname, lastname, enabled, account_expired, account_locked, credentials_expired) VALUES (6, 'scott@aol.com', 'scott', '$2a$10$F2a2W8RtbD99xXd9xtwjbuI4zjSYe04kS.s0FyvQcAIDJfh/6jjLW', 'Scott', 'Shoenberger', true, false, false, false);
+
+------------------------------------------------------------
+-- Authorities
+------------------------------------------------------------
+
+INSERT INTO authorities (id, authority) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO authorities (id, authority) VALUES (2, 'ROLE_USER');
+
+------------------------------------------------------------
+-- User_Authorities
+------------------------------------------------------------
+
+INSERT INTO user_authorities (user_id, authority_id) VALUES (1, 2);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (1, 1);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (2, 2);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (3, 2);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (4, 2);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (5, 2);
+INSERT INTO user_authorities (user_id, authority_id) VALUES (6, 2);
+
 INSERT INTO contacts (first_name, last_name, birth_date, email, version)
 VALUES ('Summer', 'Glass', '1968-08-05', 'vitae@egestasadui.net', 0),
   ('Mikayla', 'Church', '1975-04-03', 'lobortis.Class@aliquam.org', 0),

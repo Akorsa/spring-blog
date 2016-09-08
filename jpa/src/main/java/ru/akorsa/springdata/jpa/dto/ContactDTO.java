@@ -3,8 +3,8 @@ package ru.akorsa.springdata.jpa.dto;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-import ru.akorsa.springdata.jpa.common.ExtendedEmailValidator;
 import ru.akorsa.springdata.jpa.model.Contact;
+import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import java.util.Date;
 import java.util.Set;
