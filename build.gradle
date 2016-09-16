@@ -7,11 +7,6 @@ buildscript {
     }
 }
 
-task stage {
-    dependsOn build
-}
-
-
 allprojects {
 
     apply plugin: 'idea'
@@ -56,4 +51,11 @@ allprojects {
     mainClassName = 'ru.akorsa.springdata.mvc.WebInitializer'
 }
 
+    task stage {
+        dependsOn build
+        doLast {
+            delete fileTree(dir: "build", exclude: "libs")
+            delete fileTree(dir: "build/libs", exclude: "*.jar")
+        }
+    }
 }
