@@ -1,7 +1,6 @@
 package ru.akorsa.springdata.mvc.security;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,6 +19,7 @@ import javax.servlet.Filter;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.akorsa.springdata.mvc.security.SecurityRequestPostProcessors.csrf;
 import static ru.akorsa.springdata.mvc.security.SecurityRequestPostProcessors.user;
@@ -44,13 +44,13 @@ public class SecurityTests extends AbstractContext {
         rob = new User();
         rob.setId(0L);
         rob.setEmail("user@aol.com");
-        rob.setUsername("user");
+        rob.setUsername("rob");
 
         admin = new User();
         admin.setId(1L);
         admin.setEmail("admin@example.com");
-        admin.setFirstname("Admin");
-        admin.setLastname("Dude");
+        admin.setFirstName("Admin");
+        admin.setLastName("Dude");
         admin.getAuthorities().add(new Authority("ROLE_ADMIN"));
 
         mvc = MockMvcBuilders
@@ -115,22 +115,11 @@ public class SecurityTests extends AbstractContext {
     }
 
     @Test
-    @Ignore
-    public void adminCanAccessConsole() throws Exception {
-        RequestBuilder request = get("/console")
-                .with(user(admin).roles("ROLE_ADMIN"));
-
-        mvc
-                .perform(request)
-                .andExpect(status().isOk());
-    }
-
-    @Test
     public void validRegistration() throws Exception {
         RequestBuilder request = post("/register")
                 .param("username", "bobby")
-                .param("firstname", "Bob")
-                .param("lastname", "Crachet")
+                .param("firstName", "Bob")
+                .param("lastName", "Crachet")
                 .param("email", "bob@aol.com")
                 .param("password", "password")
                 .param("repeatedPassword", "password")
@@ -144,11 +133,10 @@ public class SecurityTests extends AbstractContext {
     @Test
     public void invalidRegistrationEmail() throws Exception {
 
-//        exception.expect(ConstraintViolationException.class);
         RequestBuilder request = post("/register")
                 .param("username", "bobby")
-                .param("firstname", "Bob")
-                .param("lastname", "Crachet")
+                .param("firstName", "Bob")
+                .param("lastName", "Crachet")
                 .param("email", "user")
                 .param("password", "password")
                 .param("repeatedPassword", "password")
@@ -156,6 +144,23 @@ public class SecurityTests extends AbstractContext {
         mvc
                 .perform(request)
                 .andExpect(invalidRegistration());
+    }
+
+    @Test
+    public void preExistingUsernameRegistration() throws Exception {
+        RequestBuilder request = post("/register")
+                .param("username", "user")
+                .param("firstName", "Bob")
+                .param("lastName", "Crachet")
+                .param("email", "bob@email.com")
+                .param("password", "password")
+                .param("repeatedPassword", "password")
+                .with(csrf());
+        mvc
+                .perform(request)
+                .andExpect(model().attributeHasErrors("userDTO"))
+                .andExpect(invalidRegistration())
+                .andDo(print());
     }
 
     private static ResultMatcher loginPage() {

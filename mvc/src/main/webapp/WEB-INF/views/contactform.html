@@ -46,8 +46,6 @@ $(function() {
                   th:action="@{${#httpServletRequest.getRequestURI()}}"
                   class="form-horizontal" id="contact-form">
 
-                <div th:replace="fragments/hiddenErrors :: hiddenErrors">REPLACE BEFORE COMMITTING</div>
-
                 <table class="table table-striped">
                     <tr th:classappend="${#fields.hasErrors('firstName')} ? 'has-error'">
                         <td class="col-sm-1">
@@ -108,7 +106,7 @@ $(function() {
                             <div class="form-actions pull-right">
                                 <input type="submit" class="btn btn-success"
                                        th:value="(${contact['new']} ? 'Add' : 'Update') + ' Contact'"
-                                th:disabled="${appSettings.getIsDemoSite()}"/>
+                                       th:disabled="${appSettings.getIsDemoSite()}"/>
                                 <input type="button" th:onclick="'window.location.href=\'' + @{|/contacts/|} + '\''"
                                        class="btn btn-danger" value="Cancel"/>
                             </div>
@@ -116,12 +114,16 @@ $(function() {
                     </tr>
                 </table>
             </form>
+            <div th:if="${appSettings.getIsDemoSite()}" class="form-disabled-note pull-right"><strong>Note: </strong>
+                Updating and
+                Creating Contacts requires Admin Role
+            </div>
         </div>
     </div>
     <nav th:replace="fragments/secinfo">User Info</nav>
 </div>
 <div th:include="fragments/scripts :: [id='scripts']" th:remove="tag">Scripts</div>
 <script th:src="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.js}"></script>
-<link th:href="@{/webjars/jquery-ui-themes/1.11.4/overcast/jquery-ui.min.css}" rel="stylesheet" />
+<link th:href="@{/webjars/jquery-ui-themes/1.11.4/overcast/jquery-ui.min.css}" rel="stylesheet"/>
 </body>
 </html>

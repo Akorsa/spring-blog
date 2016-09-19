@@ -47,9 +47,9 @@ task production << {
 }
 
 bootRun {
-    addResources = true
+    addResources = false
  //   systemProperty 'spring.profiles.active', 'mysql'
     systemProperty 'server.port', '8084'
-    systemProperty 'spring.profiles.active', 'h2'
+    systemProperty 'spring.profiles.active', 'mysql'
     main = 'ru.akorsa.springdata.mvc.WebInitializer'
 }

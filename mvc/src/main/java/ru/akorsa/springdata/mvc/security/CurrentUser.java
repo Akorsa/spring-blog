@@ -16,7 +16,7 @@ public class CurrentUser extends org.springframework.security.core.userdetails.U
     }
 
     public String getFullName() {
-        return user.getFirstname() + ' ' + user.getLastname();
+        return user.getFirstName() + ' ' + user.getLastName();
     }
 
     public Long getId() {
