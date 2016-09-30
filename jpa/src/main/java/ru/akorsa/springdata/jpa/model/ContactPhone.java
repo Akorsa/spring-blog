@@ -1,15 +1,17 @@
 package ru.akorsa.springdata.jpa.model;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.core.style.ToStringCreator;
 import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "contact_phones")
-public class ContactPhone implements Serializable{
+public class ContactPhone implements Serializable {
     private Long contactPhoneId;
     private String phoneType;
     private String phoneNumber;
@@ -21,11 +23,17 @@ public class ContactPhone implements Serializable{
 
     private static final long serialVersionUID = 8032497024653204603L;
 
-    public ContactPhone() {}
+    public ContactPhone() {
+    }
 
     public ContactPhone(ContactPhoneDTO contactPhoneDTO) {
         this.phoneType = contactPhoneDTO.getPhoneType();
         this.phoneNumber = contactPhoneDTO.getPhoneNumber();
+    }
+
+    @Transient
+    public boolean isNew() {
+        return (this.contactPhoneId == null);
     }
 
     @Id
@@ -41,6 +49,7 @@ public class ContactPhone implements Serializable{
 
     @Basic
     @Column(name = "phone_type", nullable = false, insertable = true, updatable = true, length = MAX_LENGTH_PHONE_TYPE)
+    @NotEmpty
     public String getPhoneType() {
         return phoneType;
     }
@@ -51,6 +60,7 @@ public class ContactPhone implements Serializable{
 
     @Basic
     @Column(name = "phone_number", nullable = false, insertable = true, updatable = true, length = MAX_LENGTH_PHONE_NUMBER)
+    @NotEmpty
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -81,11 +91,14 @@ public class ContactPhone implements Serializable{
 
     @Override
     public String toString() {
-        return "   Details: " +
-                "id=" + contactPhoneId +
-                ", phoneType='" + phoneType + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", version=" + version;
+        return new ToStringCreator(this)
+                .append("id", this.getContactPhoneId())
+                .append("new", this.isNew())
+                .append("contactId", this.getContact().getContactId())
+                .append("phoneType", this.getPhoneType())
+                .append("phoneNumber", this.getPhoneNumber())
+                .append("version", this.getVersion())
+                .toString();
     }
 
     public void update(final String phoneType, final String phoneNumber) {

@@ -25,6 +25,7 @@ public class ContactTestUtils {
     private static final Set<ContactPhoneDTO> CONTACT_PHONE_DTOS =
             createContactPhoneDTOs();
     public static final HobbyDTO JOUSTING_HOBBY_DTO = createHobbyDTO();
+    public static final ContactPhoneDTO HOME_CONTACT_PHONE_DTO = createContactPhoneDTO();
     private static final Set<HobbyDTO> HOBBY_DTOS = createHobbyDTOs();
 
     private static Set<HobbyDTO> createHobbyDTOs() {
@@ -39,12 +40,21 @@ public class ContactTestUtils {
         return new HobbyDTO("Jousting");
     }
 
+    private static ContactPhoneDTO createContactPhoneDTO() {
+        return new ContactPhoneDTO("Home", "717-244-4444");
+    }
+
     private static Set<ContactPhoneDTO> createContactPhoneDTOs() {
 
         return new HashSet<ContactPhoneDTO>() {{
             add(new ContactPhoneDTO("Mobile", "717-244-2222"));
             add(new ContactPhoneDTO("Business", "717-244-3333"));
         }};
+    }
+
+    public static ContactDTO addContactPhoneToContactDTO(ContactDTO contactDTO) {
+        contactDTO.getContactPhones().add(HOME_CONTACT_PHONE_DTO);
+        return contactDTO;
     }
 
     public static ContactDTO newContactDTO(boolean addChildren) {

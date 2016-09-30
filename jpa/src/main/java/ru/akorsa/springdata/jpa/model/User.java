@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.akorsa.springdata.jpa.enums.Role;
 import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import javax.persistence.*;
@@ -158,6 +159,10 @@ public class User implements UserDetails {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public boolean hasAuthority(Role role) {
+        return hasAuthority(String.valueOf(role));
     }
 
     public boolean hasAuthority(String targetAuthority) {

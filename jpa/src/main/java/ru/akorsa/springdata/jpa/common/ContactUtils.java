@@ -8,6 +8,7 @@ import ru.akorsa.springdata.jpa.model.Hobby;
 import ru.akorsa.springdata.jpa.model.User;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * Date: 4/15/15
  * Time: 12:06 PM
  */
-public class SpringUtils {
+public class ContactUtils {
 
     public static void printProperty(String header, String property) {
         System.out.println("\r\n" + header + " ------------------------------ ");
@@ -93,7 +94,7 @@ public class SpringUtils {
     public static List<ContactDTO> contactsToContactsDTOs(List<Contact> contacts) {
         return contacts
                 .stream()
-                .map(SpringUtils::contactToContactDTO)
+                .map(ContactUtils::contactToContactDTO)
                 .collect(Collectors.toList());
     }
 
@@ -131,6 +132,11 @@ public class SpringUtils {
         HobbyDTO hobbyDTO = new HobbyDTO();
         hobbyDTO.setHobbyTitle(hobbyTitle);
         return hobbyDTO;
+    }
+
+    public static Long randomNegativeId() {
+        Random rand = new Random();
+        return -1 * ((long) rand.nextInt(1000));
     }
 
 }

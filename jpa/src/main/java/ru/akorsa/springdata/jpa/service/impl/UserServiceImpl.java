@@ -10,7 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.akorsa.springdata.jpa.dto.UserDTO;
+import ru.akorsa.springdata.jpa.enums.Role;
 import ru.akorsa.springdata.jpa.model.Authority;
+import ru.akorsa.springdata.jpa.model.CurrentUser;
 import ru.akorsa.springdata.jpa.model.User;
 import ru.akorsa.springdata.jpa.repository.AuthorityRepository;
 import ru.akorsa.springdata.jpa.repository.UserRepository;
@@ -34,25 +36,25 @@ public class UserServiceImpl implements UserService {
         this.authorityRepository = authorityRepository;
     }
 
-    @Transactional(value = "jpaTransactionManager", readOnly = true)
+    @Transactional(readOnly = true)
     public Optional<User> getUserById(long id) {
         logger.debug("Getting user={}", id);
         return Optional.ofNullable(userRepository.findById(id));
     }
 
-    @Transactional(value = "jpaTransactionManager", readOnly = true)
+    @Transactional(readOnly = true)
     public User getUserByUsername(String username) {
         logger.debug("Getting user={}", username);
         return userRepository.findByUsername(username);
     }
 
-    @Transactional(value = "jpaTransactionManager", readOnly = true)
+    @Transactional(readOnly = true)
     public Optional<User> getByEmail(String email) {
         logger.debug("Getting user by email={}", email);
         return userRepository.findOneByEmail(email);
     }
 
-    @Transactional(value = "jpaTransactionManager", readOnly = true)
+    @Transactional(readOnly = true)
     public Collection<User> getAllUsers() {
         logger.debug("Getting all users");
         return userRepository.findAll();
@@ -83,5 +85,14 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public List<User> getUsersWithDetail() {
         return userRepository.getUsersWithDetail();
+    }
+
+    @Override
+    public boolean canAccessUser(CurrentUser currentUser, String username) {
+        logger.debug("Checking if user={} has access to user={}",
+                currentUser, username);
+        return currentUser != null
+                && (currentUser.getUser().hasAuthority(Role.ROLE_ADMIN) ||
+                currentUser.getUsername().equals(username));
     }
 }

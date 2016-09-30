@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.akorsa.springdata.jpa.model.CurrentUser;
 import ru.akorsa.springdata.jpa.model.User;
 import ru.akorsa.springdata.jpa.repository.UserRepository;
 

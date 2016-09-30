@@ -1,6 +1,4 @@
-package ru.akorsa.springdata.mvc.security;
-
-import ru.akorsa.springdata.jpa.model.User;
+package ru.akorsa.springdata.jpa.model;
 
 public class CurrentUser extends org.springframework.security.core.userdetails.User {
 

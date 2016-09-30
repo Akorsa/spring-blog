@@ -2,7 +2,7 @@ package ru.akorsa.springdata.jpa;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.SpringVersion;
-import ru.akorsa.springdata.jpa.common.SpringUI;
+import ru.akorsa.springdata.jpa.common.ContactUI;
 import ru.akorsa.springdata.jpa.config.ApplicationConfig;
 
 public class Launcher {
@@ -13,7 +13,7 @@ public class Launcher {
         ctx.register(ApplicationConfig.class);
         ctx.refresh();
         System.out.println("version: " + SpringVersion.getVersion());
-        SpringUI ui = ctx.getBean(SpringUI.class);
+        ContactUI ui = ctx.getBean(ContactUI.class);
         ui.init();
 
     }

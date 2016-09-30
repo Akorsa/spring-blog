@@ -1,6 +1,7 @@
 package ru.akorsa.springdata.jpa.service;
 
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
 import ru.akorsa.springdata.jpa.model.Contact;
@@ -20,6 +21,9 @@ public interface ContactService {
     Contact update(ContactDTO updated) throws ContactNotFoundException;
 
     Contact findContactById(Long ID) throws ContactNotFoundException;
+    ContactPhone addContactPhone(ContactPhoneDTO contactPhoneDTO);
+    ContactPhone findContactPhoneById(Long contactPhoneID);
+    ContactPhone deleteContactPhoneById(Long contactPhoneId) throws ContactNotFoundException;
     Contact getContactByEmail(String email);
     Contact getContactByIdWithDetail(Long ID);
     Contact deleteById(Long id) throws ContactNotFoundException;
@@ -27,8 +31,8 @@ public interface ContactService {
 
     List<ContactPhone> findContactPhonesByContactId(Long contactId);
 
-    Hobby addNewHobby(HobbyDTO hobbyDTO);
+    Hobby addHobby(HobbyDTO hobbyDTO);
     Hobby updateHobbyTitle(HobbyDTO hobbyDTO) throws ContactNotFoundException;
-    List<Hobby> findAllContacts();
+    List<Hobby> findAllHobbies();
     Hobby findByHobbyTitle(String hobbyTitle);
 }

@@ -1,6 +1,7 @@
 package ru.akorsa.springdata.jpa.service;
 
 import ru.akorsa.springdata.jpa.dto.UserDTO;
+import ru.akorsa.springdata.jpa.model.CurrentUser;
 import ru.akorsa.springdata.jpa.model.User;
 
 import java.util.Collection;
@@ -20,4 +21,6 @@ public interface UserService {
     User getUserByUsername(String username);
 
     List<User> getUsersWithDetail();
+
+    boolean canAccessUser(CurrentUser currentUser, String username);
 }

@@ -3,9 +3,10 @@ package ru.akorsa.springdata.jpa.common;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.akorsa.springdata.jpa.service.ContactService;
+import ru.akorsa.springdata.jpa.service.UserService;
 
 @Component
-public class SpringUI {
+public class ContactUI {
 
     @Autowired
     ApplicationSettings applicationSettings;
@@ -13,13 +14,28 @@ public class SpringUI {
     @Autowired
     ContactService contactService;
 
+    @Autowired
+    private UserService userService;
+
     public void init() {
         //propertiesDemo();
-        entityDemo();
+        //entityDemo();
+        randomDemo();
+    }
+
+    public void randomDemo() {
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
+        System.out.println(ContactUtils.randomNegativeId());
     }
 
     public void propertiesDemo() {
-        SpringUtils.printProperty(
+        ContactUtils.printProperty(
                 "ApplicationSettings.getIsDemoSite()",
                 applicationSettings.getIsDemoSite().toString());
     }
@@ -48,6 +64,7 @@ public class SpringUI {
 
 
     public void entityDemo() {
+        ContactUtils.listUsersWithDetail(userService.getUsersWithDetail());
         /*SpringUtils.listContacts("ENTITIES FIND ALL",
                 contactService.findAll());
         SpringUtils.listContacts("ENTITIES FIND BY FIRST NAME",

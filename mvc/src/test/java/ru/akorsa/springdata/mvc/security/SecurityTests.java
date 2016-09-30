@@ -11,15 +11,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import ru.akorsa.springdata.jpa.model.Authority;
-import ru.akorsa.springdata.jpa.model.User;
+import ru.akorsa.springdata.jpa.model.CurrentUser;
 import ru.akorsa.springdata.mvc.AbstractContext;
+import ru.akorsa.springdata.mvc.controller.UserController;
 
 import javax.servlet.Filter;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.akorsa.springdata.mvc.security.SecurityRequestPostProcessors.csrf;
 import static ru.akorsa.springdata.mvc.security.SecurityRequestPostProcessors.user;
@@ -33,25 +32,21 @@ public class SecurityTests extends AbstractContext {
     @Autowired
     private Filter springSecurityFilterChain;
 
-    private User rob;
-    private User admin;
+    @Autowired
+    private CurrentUserDetailsService currentUserDetailsService;
+
+    private CurrentUser keith;
+    private CurrentUser user;
+    private CurrentUser admin;
 
     private MockMvc mvc;
 
     @Before
     public void setup() {
-        // NOTE: Could also load rob from UserRepository if we wanted
-        rob = new User();
-        rob.setId(0L);
-        rob.setEmail("user@aol.com");
-        rob.setUsername("rob");
 
-        admin = new User();
-        admin.setId(1L);
-        admin.setEmail("admin@example.com");
-        admin.setFirstName("Admin");
-        admin.setLastName("Dude");
-        admin.getAuthorities().add(new Authority("ROLE_ADMIN"));
+        keith =currentUserDetailsService.loadUserByUsername("keith");
+        user =currentUserDetailsService.loadUserByUsername("user");
+        admin =currentUserDetailsService.loadUserByUsername("admin");
 
         mvc = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -95,23 +90,60 @@ public class SecurityTests extends AbstractContext {
     }
 
     @Test
-    public void composeRequiresCsrf() throws Exception {
-        RequestBuilder request = post("/")
-                .with(user(rob).roles("USER"));
-
-        mvc
-                .perform(request)
-                .andExpect(invalidCsrf());
-    }
-
-    @Test
     public void userCannotAccessConsole() throws Exception {
         RequestBuilder request = get("/console")
-                .with(user(rob).roles("USER"));
+                .with(user(keith));
 
         mvc
                 .perform(request)
                 .andExpect(status().isForbidden());
+    }
+
+    @Test
+    public void userCannotAccessAnotherProfile() throws Exception {
+        RequestBuilder request = get("/{username}", "user")
+                .with(user(keith))
+                .with(csrf());
+
+        mvc
+                .perform(request)
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    public void userCanAccessOwnProfile() throws Exception {
+
+        RequestBuilder request = get("/{username}", "user")
+                .with(user(user))
+                .with(csrf());
+
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(view().name(UserController.USER_PROFILE_VIEW));
+    }
+
+    @Test
+    public void adminCanAccessOwnProfile() throws Exception {
+
+        RequestBuilder request = get("/{username}", "keith")
+                .with(user(admin))
+                .with(csrf());
+
+        mvc
+                .perform(request)
+                .andExpect(status().isOk())
+                .andExpect(view().name(UserController.USER_PROFILE_VIEW));
+
+    }
+
+    @Test
+    public void profileRequiresCsrf() throws Exception {
+        RequestBuilder request = post("/")
+                .with(user(keith));
+
+        mvc
+                .perform(request)
+                .andExpect(invalidCsrf());
     }
 
     @Test
@@ -159,8 +191,7 @@ public class SecurityTests extends AbstractContext {
         mvc
                 .perform(request)
                 .andExpect(model().attributeHasErrors("userDTO"))
-                .andExpect(invalidRegistration())
-                .andDo(print());
+                .andExpect(invalidRegistration());
     }
 
     private static ResultMatcher loginPage() {
@@ -189,5 +220,18 @@ public class SecurityTests extends AbstractContext {
         return result -> status().isForbidden().match(result);
     }
 
+    @Test
+    public void getContactForm() throws Exception {
+
+        RequestBuilder request = get("/contact/update/1")
+                .with(user(admin))
+                .with(csrf());
+
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(view().name("contacts/contactform"));
+        //               .andDo(MockMvcResultHandlers.print());
+
+    }
 
 }

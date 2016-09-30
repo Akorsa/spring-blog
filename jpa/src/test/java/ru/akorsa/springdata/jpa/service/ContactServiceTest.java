@@ -2,6 +2,7 @@ package ru.akorsa.springdata.jpa.service;
 
 import ru.akorsa.springdata.jpa.config.ApplicationConfig;
 import ru.akorsa.springdata.jpa.dto.ContactDTO;
+import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 import ru.akorsa.springdata.jpa.enums.DataConfigProfile;
 import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TransactionConfiguration(defaultRollback = false)
+@TransactionConfiguration(defaultRollback = true)
 @ContextConfiguration(classes = ApplicationConfig.class)
 @Transactional
 @ActiveProfiles(DataConfigProfile.H2)
@@ -151,21 +152,26 @@ public class ContactServiceTest {
     public void addHobby()
             throws ContactNotFoundException {
 
-        List<Hobby> hobbies = contactService.findAllContacts();
+        List<Hobby> hobbies = contactService.findAllHobbies();
         int originalHobbyCount = hobbies.size();
 
-        HobbyDTO hobbyDTO = ContactTestUtils.newHobbyDTO();
-        contactService.addNewHobby(hobbyDTO);
+        Contact contact = contactService.findContactById(5L);
+        int originalContactHobbyCount = contact.getHobbies().size();
 
-        // Confirm new hobby in database
-        hobbies = contactService.findAllContacts();
+        HobbyDTO hobbyDTO = ContactTestUtils.newHobbyDTO();
+        Hobby hobby = contactService.addHobby(hobbyDTO);
+
+        contact.getHobbies().add(hobby);
+        int finalContactHobbyCount = contact.getHobbies().size();
+        assertThat(finalContactHobbyCount, is(greaterThan(originalContactHobbyCount)));
+
+        hobbies = contactService.findAllHobbies();
         int finalHobbyCount = hobbies.size();
         assertThat(finalHobbyCount, is(greaterThan(originalHobbyCount)));
 
         // Confirm findByHobbyTitle not null
 
-        Hobby hobby =
-                contactService.findByHobbyTitle(ContactTestUtils.HOBBY_TITLE.toUpperCase());
+        hobby = contactService.findByHobbyTitle(ContactTestUtils.HOBBY_TITLE.toUpperCase());
         assertEquals(hobby.getHobbyTitle(), ContactTestUtils.HOBBY_TITLE);
     }
 
@@ -196,5 +202,30 @@ public class ContactServiceTest {
 
     }
 
+    @Test
+    public void addContactPhoneToContactByUpdate() throws ContactNotFoundException {
+        Contact contact = contactService.findContactById(5L);
+        ContactDTO contactDTO = ContactTestUtils.contactToContactDTO(contact);
+        assertEquals(contactDTO.getContactPhones().size(), 2);
 
+        contactDTO.getContactPhones().add(ContactTestUtils.HOME_CONTACT_PHONE_DTO);
+        contact = contactService.update(contactDTO);
+        assertEquals(contact.getContactPhones().size(), 3);
+    }
+
+    @Test
+    public void addContactPhoneToContact() throws
+            ContactNotFoundException {
+        Contact contact = contactService.findContactById(5L);
+        assertEquals(contact.getContactPhones().size(), 2);
+
+        ContactPhoneDTO contactPhoneDTO = ContactTestUtils.HOME_CONTACT_PHONE_DTO;
+        contactPhoneDTO.setContactId(5L);
+        ContactPhone contactPhone = contactService.addContactPhone(contactPhoneDTO);
+        contact.addContactPhone(contactPhone);
+        assertEquals(contact.getContactPhones().size(), 3);
+
+        Contact contactRevisited = contactService.findContactById(5L);
+        assertEquals(contactRevisited.getContactPhones().size(), 3);
+    }
 }

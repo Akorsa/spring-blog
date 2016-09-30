@@ -1,33 +1,40 @@
 package ru.akorsa.springdata.mvc.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import ru.akorsa.springdata.jpa.common.ApplicationSettings;
-import ru.akorsa.springdata.mvc.security.CurrentUser;
-import ru.akorsa.springdata.mvc.security.CurrentUserDetailsService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ru.akorsa.springdata.jpa.exceptions.UnknownResourceException;
 
-@ControllerAdvice
+import java.security.Principal;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+@Controller
 public class GeneralConroller {
 
-    @Autowired
-    private CurrentUserDetailsService userDetailsService;
+    public static final String HOME_VIEW = "home";
+    public static final String ERROR_403_VIEW = "errors/403";
 
-    @Autowired
-    private ApplicationSettings applicationSettings;
-
-    @ModelAttribute("currentUser")
-    public CurrentUser getCurrentUser(Authentication authentication) {
-        if (authentication == null) {
-            return null;
-        } else {
-            return userDetailsService.loadUserByUsername(authentication.getName());
-        }
+    @RequestMapping(value = "/", method = GET)
+    public String home(Model model) {
+        return HOME_VIEW;
     }
 
-    @ModelAttribute("appSettings")
-    public ApplicationSettings getApplicationSettings() {
-        return applicationSettings;
+    @RequestMapping(value = {"{path:(?!webjars|static|console).*$}",
+            "{path:(?!webjars|static|console).*$}/**"}, headers = "Accept=text/html")
+    public void unknown() {
+        throw new UnknownResourceException();
+    }
+
+    @RequestMapping(value = "/403", method = GET)
+    public ModelAndView accesssDenied(Principal user) {
+
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("errortitle", "Not Authorized");
+        mav.addObject("errorbody", "You are not authorized to view this page.");
+        mav.setViewName(ERROR_403_VIEW);
+        return mav;
+
     }
 }
