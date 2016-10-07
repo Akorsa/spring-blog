@@ -79,9 +79,8 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/contact/json/{id}", method = GET)
-    public
     @ResponseBody
-    ContactDTO contactById(@PathVariable Long id) throws ContactNotFoundException {
+    public ContactDTO contactById(@PathVariable Long id) throws ContactNotFoundException {
         Contact contact = contactService.findContactById(id);
         ObjectMapper jacksonMapper = new ObjectMapper();
         jacksonMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
@@ -129,7 +128,7 @@ public class ContactController {
     @RequestMapping(value = "/contact/update/{contactId}", method = GET)
     public String contactEditPage(@PathVariable("contactId") Long id, Model model)
             throws ContactNotFoundException {
-        logger.info("Showing contact update page for contact with: {}", id);
+        logger.info("Showing contact update page for contact with id: {}", id);
 
         Contact found = contactService.getContactByIdWithDetail(id);
         logger.info("Found contact: {}", found);
@@ -169,7 +168,7 @@ public class ContactController {
 
     @RequestMapping(value = "/contact/update/{contactId}", method = POST)
     public String updateContact(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
-                                SessionStatus status, RedirectAttributes attributes)
+                                RedirectAttributes attributes)
             throws ContactNotFoundException {
         if (result.hasErrors()) {
             return CONTACT_FORM_VIEW;

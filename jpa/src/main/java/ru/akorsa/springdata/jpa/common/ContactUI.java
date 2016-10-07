@@ -9,10 +9,10 @@ import ru.akorsa.springdata.jpa.service.UserService;
 public class ContactUI {
 
     @Autowired
-    ApplicationSettings applicationSettings;
+    private ApplicationSettings applicationSettings;
 
     @Autowired
-    ContactService contactService;
+    private ContactService contactService;
 
     @Autowired
     private UserService userService;

@@ -3,9 +3,12 @@ package ru.akorsa.springdata.jpa.model;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.core.style.ToStringCreator;
+import org.springframework.format.annotation.DateTimeFormat;
 import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -71,7 +74,12 @@ public class Contact implements Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "birth_date", nullable = true, insertable = true, updatable = true)
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @NotNull @Past
+    @Column(name = "birth_date",
+            nullable = true,
+            insertable = true,
+            updatable = true)
     public Date getBirthDate() {
         return birthDate;
     }
@@ -132,6 +140,7 @@ public class Contact implements Serializable {
         this.hobbies = hobbies;
     }
 
+    @Override
     public String toString() {
         return new ToStringCreator(this)
                 .append("id", this.getContactId())
@@ -142,7 +151,6 @@ public class Contact implements Serializable {
                 .append("birthDate", this.getBirthDate())
                 .toString();
     }
-
 
     public void update(final String firstName, final String lastName, final String emailAddress, Date birthDate) {
         this.firstName = firstName;

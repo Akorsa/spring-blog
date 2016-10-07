@@ -93,12 +93,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
+    @Override
     public void configure(WebSecurity web) throws Exception {
-        web.
-                ignoring()
+        web
+                .ignoring()
                 .antMatchers(IGNORED_RESOURCE_LIST);
     }
 
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(PERMITALL_RESOURCE_LIST).permitAll()
