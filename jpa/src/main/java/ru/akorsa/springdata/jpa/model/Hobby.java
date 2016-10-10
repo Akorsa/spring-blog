@@ -54,7 +54,7 @@ public class Hobby implements Serializable {
 
 
     public String toString() {
-        return "Hobby: " + getHobbyTitle();
+        return getHobbyTitle();
     }
 
     public void update(final String hobbyTitle) {

@@ -11,7 +11,7 @@ import java.security.Principal;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
-public class GeneralConroller {
+public class GeneralController {
 
     public static final String HOME_VIEW = "home";
     public static final String ERROR_403_VIEW = "errors/403";

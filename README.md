@@ -9,6 +9,18 @@ http://akorsa.ru which are listed below in their accompanying implementation ver
 *Implementations listed below by version are found in their corresponding branch, v0.0.1, v0.0.2, etc. Recent branches may not
 contain features found in prior versions.*
 
+##v0.1.9 -- More Child Object Handling in MVC and Thymeleaf
+
+- Hobbies added to Contact Update Form w/ Custom Data Validation
+- Demo of Spring Boot CommandLineRunner
+- Contact Form tests added
+- [Post: Using Spring Boot CommandLineRunner](http://nixmash.com/java/using-spring-boot-commandlinerunner/)
+- [Post: Testing Custom Exception Handling Classes in Spring MVC](http://nixmash.com/java/testing-custom-exception-handling-classes-in-spring-mvc/)
+- [Post: Handling Null Radio Button Data in Thymeleaf and Spring MVC](http://nixmash.com/java/handling-null-radio-button-data-in-thymeleaf-and-spring-mvc/)
+
+![Radio Button Child Hobby Objects in v0.1.9](http://nixmash.com/x/pics/github/spring-data-0.1.9.png)
+
+
 ##v0.1.8 -- Child Object Processing, MVC Method Level Security##
 
 - Add, Update, Remove Contact Phones added to Contact Update form
@@ -16,7 +28,7 @@ contain features found in prior versions.*
 - [Post: Spring MVC Method Security with @PreAuthorize and Sp-EL](http://nixmash.com/java/spring-mvc-method-security-with-preauthorize-and-sp-el/)
 - [Post: Consistent Fonts with Bootstrap Glyphicon and Thymeleaf](http://nixmash.com/java/consistent-fonts-with-bootstrap-glyphicon-and-thymeleaf/)
 
-##v0.1.7##
+##v0.1.7 -- Full MySQL Support, WAR Deployment##
 
 - MySQL Spring Security Support (mysql.setup file now located in /install folder)
 - Deployed as a WAR at http://nixmashspring.daveburkevt.com
@@ -26,7 +38,7 @@ contain features found in prior versions.*
 - [Post: Deploying Your Spring Boot WAR Application](http://nixmash.com/java/deploying-your-spring-boot-war-application/)
 - [Post: Adding MySQL Spring Security to Existing H2 App](http://nixmash.com/java/adding-mysql-spring-security-to-existing-h2-app/)
 
-##v0.1.6## -- Initial Release w/ Spring Security##
+##v0.1.6 -- Initial Release w/ Spring Security##
 
 - Spring Security with Login and User Registration. Supports Multiple Role Assignment with USERS, USER_AUTHORITIES and AUTHORITIES table storage
 - H2 Console support at http://site/console. USER Role Access Denied to Console
@@ -47,7 +59,7 @@ contain features found in prior versions.*
 
 ![Registration form validation in v0.1.6](http://nixmash.com/x/pics/github/spring-data-0.1.6.png)
 
-##v0.1.5## -- Contact Add/Update Form, Dandelion Asset Bundling##
+##v0.1.5 -- Contact Add/Update Form, Dandelion Asset Bundling##
 
 - Multi-use Contact Add/Update Form
 - Fadeout Feedback Messages on Contact Add/Update with jQuery and Handlebars
@@ -62,7 +74,7 @@ contain features found in prior versions.*
 - [Post: Including Webjars in IntelliJ Tomcat WAR Artifact](http://nixmash.com/java/including-webjars-in-intellij-tomcat-war-artifact/)
 - [Post: Using Your Favorite Favicon in Spring MVC](http://nixmash.com/java/using-for-favorite-favicon-in-spring-mvc/)
 
-##v0.1.4## -- Contact Display, List and Search##
+##v0.1.4 -- Contact Display, List and Search##
 
 - jQuery, Bootstrap and Bootswatch Webjars
 - Using Bootswatch Webjar with Spring
@@ -73,14 +85,14 @@ contain features found in prior versions.*
 
 ![Bootstrap with All Contacts Display in Spring-Data MVC with Thymeleaf v0.1.4](http://nixmash.com/x/pics/github/spring-data-0.1.4.png)
 
-##v0.1.3## -- Initial release w/ Thymeleaf##
+##v0.1.3 -- Initial release w/ Thymeleaf##
 
 - Thymeleaf support added
 - [Post: Thymeleaf Configuration with Spring Boot](http://nixmash.com/java/thymeleaf-configuration-with-spring-boot/)
 
 ![Spring-Data MVC with Thymeleaf in v0.1.3](http://nixmash.com/x/pics/github/spring-data-0.1.3.png)
 
-##v0.1.2## -- Multi-Module with JPA and MVC Modules##
+##v0.1.2 -- Multi-Module with JPA and MVC Modules##
 
 - MVC Module Added
 - JPA and MVC Modules wired as single Spring Application
@@ -94,7 +106,7 @@ contain features found in prior versions.*
 
 ![Spring-Data Does MVC in v0.1.2](http://nixmash.com/x/pics/github/spring-data-0.1.2.png)
 
-##v0.1.1## -- @ManyToMany Hobbies added to Contact Model##
+##v0.1.1 -- @ManyToMany Hobbies added to Contact Model##
 
 - Addition of Hobbies, a @ManyToMany Entity with Contacts
 - Adding Hobbies dynamically on new and updated Contacts, and as separate process
@@ -104,7 +116,7 @@ contain features found in prior versions.*
 - [Post: Working with the Many in a JPA @ManyToMany](http://nixmash.com/java/working-with-the-many-in-a-jpa-manytomany/)
 
 
-##v0.1.0## -- @OneToMany Contact Phones added to Contact Model##
+##v0.1.0 -- @OneToMany Contact Phones added to Contact Model##
 
 - Examples of Updating, Deleting and Adding records with focus on @OneToMany relationship handling
 - ContactDTO now containing Contact and ContactPhone Set
@@ -114,18 +126,18 @@ contain features found in prior versions.*
 - [Post: Adding a JPA Entity and its @OneToMany Children](http://nixmash.com/java/adding-a-jpa-entity-and-its-onetomany-children/)
 - [Post: Updating the Many in a JPA @OneToMany](http://nixmash.com/java/updating-the-many-in-a-jpa-onetomany/)
 
-##v0.0.9## -- Lazy Loading examples##
+##v0.0.9 -- Lazy Loading examples##
 
 - Several examples of Lazy Loading. See NixMash post [Approaches to JPA Lazy Loading](http://nixmash.com/java/approaches-to-jpa-lazy-loading/) for details
 - First pass at creating schema DTO objects for use in updating and creating data
 - Modified database schema to better adhere to database relationship best practices. Updates are reflected in Entities.
 
-##v0.0.8## -- Multi-database configuration w/ H2Console and MySQL##
+##v0.0.8 -- Multi-database configuration w/ H2Console and MySQL##
 
 - h2database and mySQL JPA Data Configuration
 - Profiles based on Enumerator value (ex: JpaDataConfig.MYSQL)
 
-##v0.0.7## -- Multi-profile configuration##
+##v0.0.7 -- Multi-profile configuration##
 
 - ApplicationContext and Data Retrieval Tests
 - "Production" and "Dev" Spring Profiles
@@ -133,7 +145,7 @@ contain features found in prior versions.*
 - Broke out Production and Dev Profile Configurations, extend base SpringConfiguration class. Plan to redesign further
 - Spring Profile set in Gradle.build bootRun task
 
-##v0.0.6## -- GUI Generated Entities and Diagram Examples##
+##v0.0.6 -- GUI Generated Entities and Diagram Examples##
 
 - Generated supplemental Contact, ContactTelDetail and Hobby Entities using the IntelliJ Persistence View GUI tools. (Contain "Entity" classname suffix.)
 - Output based on new Entities, shown below
@@ -142,12 +154,12 @@ contain features found in prior versions.*
 ![Image of Spring Data JPA Output v0.0.6](http://nixmash.com/x/pics/github/spring-data-0.0.6.png)
 
 
-##v0.0.5## -- Hibernate and JPA Module structure##
+##v0.0.5 -- Hibernate and JPA Module structure##
 
 - Broke-up the application into two separate IntelliJ Modules
 - Root and child Gradle project configuration
 
-##v0.0.4## -- Initial Release with JPA##
+##v0.0.4 -- Initial Release with JPA##
 
 - Spring Data JPA Implementation
 - Dual SpringJPAConfiguration and SpringHbnConfiguration classes
@@ -159,7 +171,7 @@ contain features found in prior versions.*
 ![Image of Spring Data JPA Output v0.0.4](http://nixmash.com/x/pics/github/spring-data-0.0.4.png)
 
 
-##v0.0.3## -- DAO Implementation##
+##v0.0.3 -- DAO Implementation##
 
 - Generic DAO Interface Implementation
 - Added Service Facade
@@ -167,7 +179,7 @@ contain features found in prior versions.*
 - Data and Output identical to v0.0.1
 - _Spring 4.0.6, Spring-Boot 1.1.4_
 
-##v0.0.2##  -- Using Spring Properties##
+##v0.0.2  -- Using Spring Properties##
 
 - Populating DataSource connection from Property File
 - Using both @Value and @Autowired Environment properties
@@ -178,7 +190,7 @@ contain features found in prior versions.*
 
 ![Image of Output v0.0.2](http://nixmash.com/x/pics/github/spring-hibernate-properties.png)
 
-##v0.0.1## -- Base Configuration in Spring and Hibernate##
+##v0.0.1 -- Base Configuration in Spring and Hibernate##
 
 - Changed XML Spring Configuration to Annotations
 - Changed datasource from embedded H2 to MySql

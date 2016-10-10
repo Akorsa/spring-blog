@@ -20,6 +20,7 @@ import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.exceptions.ContactNotFoundException;
 import ru.akorsa.springdata.jpa.model.Contact;
 import ru.akorsa.springdata.jpa.model.ContactPhone;
+import ru.akorsa.springdata.jpa.model.Hobby;
 import ru.akorsa.springdata.jpa.model.validators.ContactFormValidator;
 import ru.akorsa.springdata.jpa.service.ContactService;
 
@@ -55,6 +56,7 @@ public class ContactController {
 
     protected static final String MODEL_ATTRIBUTE_CONTACT = "contact";
     protected static final String MODEL_ATTRIBUTE_CONTACTS = "contacts";
+    protected static final String MODEL_ATTRIBUTE_HOBBIES = "hobbies";
     protected static final String PARAMETER_CONTACT_ID = "id";
 
     @Autowired
@@ -110,7 +112,7 @@ public class ContactController {
             addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_CONTACT_ADDED,
                     added.getFirstName(), added.getLastName());
 
-            return "redirect:/contacts/";
+            return "redirect:/contacts";
         }
     }
 
@@ -134,7 +136,9 @@ public class ContactController {
         Contact found = contactService.getContactByIdWithDetail(id);
         logger.info("Found contact: {}", found);
 
+        List<Hobby> hobbies = contactService.findAllHobbies();
         model.addAttribute(MODEL_ATTRIBUTE_CONTACT, found);
+        model.addAttribute(MODEL_ATTRIBUTE_HOBBIES, hobbies);
         return CONTACT_FORM_VIEW;
     }
 
@@ -169,9 +173,13 @@ public class ContactController {
 
     @RequestMapping(value = "/contact/update/{contactId}", method = POST)
     public String updateContact(@Valid @ModelAttribute("contact") Contact contact, BindingResult result,
-                                SessionStatus status, RedirectAttributes attributes)
+                                RedirectAttributes attributes, Model model)
             throws ContactNotFoundException {
         if (result.hasErrors()) {
+            if (contact.getHobbies() == null) {
+                List<Hobby> hobbies = contactService.findAllHobbies();
+                model.addAttribute(MODEL_ATTRIBUTE_HOBBIES, hobbies);
+            }
             return CONTACT_FORM_VIEW;
         } else {
             ContactDTO contactDTO = ContactUtils.contactToContactDTO(contact);
