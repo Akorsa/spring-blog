@@ -1,6 +1,5 @@
 package ru.akorsa.springdata.jpa.config.db;
 
-import org.h2.store.Data;
 import org.hibernate.dialect.Dialect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,22 +8,25 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.auditing.DateTimeProvider;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
-import org.hibernate.SessionFactory;
-import ru.akorsa.springdata.jpa.model.Contact;
-import ru.akorsa.springdata.jpa.model.ContactPhone;
-import ru.akorsa.springdata.jpa.model.Hobby;
+import ru.akorsa.springdata.jpa.model.auditors.AuditingDateTimeProvider;
+import ru.akorsa.springdata.jpa.model.auditors.DateTimeService;
+import ru.akorsa.springdata.jpa.model.auditors.UsernameAuditorAware;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider")
+@EnableSpringDataWebSupport
 public abstract class JpaCommonConfig {
     private static final Logger logger = LoggerFactory.getLogger(JpaCommonConfig.class);
     public static final String UNDEFINED = "**UNDEFINED**";
@@ -40,6 +42,16 @@ public abstract class JpaCommonConfig {
 
     @Bean
     public abstract DataSource dataSource();
+
+    @Bean
+    AuditorAware<String> auditorProvider() {
+        return new UsernameAuditorAware();
+    }
+
+    @Bean
+    DateTimeProvider dateTimeProvider(DateTimeService dateTimeService) {
+        return new AuditingDateTimeProvider(dateTimeService);
+    }
 
     @Bean
     @Qualifier(value = "jpaTransactionManager")

@@ -9,12 +9,13 @@ import ru.akorsa.springdata.jpa.enums.Role;
 import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 2002390446280945447L;
     private static final Logger logger = LoggerFactory.getLogger(User.class);
