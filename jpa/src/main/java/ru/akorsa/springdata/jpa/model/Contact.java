@@ -13,8 +13,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import ru.akorsa.springdata.jpa.model.validators.ExtendedEmailValidator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Date;

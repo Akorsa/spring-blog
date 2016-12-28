@@ -14,7 +14,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.nixmash.springdata" level="info" />
+    <logger name="ru.akorsa.springdata" level="info" />
     <logger name="org.thymeleaf" level="info"/>
     <logger name="org.hibernate" level="OFF"/>
 

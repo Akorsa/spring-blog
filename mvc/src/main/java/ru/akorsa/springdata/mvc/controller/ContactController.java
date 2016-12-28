@@ -142,7 +142,7 @@ public class ContactController {
     @RequestMapping(value = "/contact/update/{contactId}", method = GET)
     public String contactEditPage(@PathVariable("contactId") Long id, Model model)
             throws ContactNotFoundException {
-        logger.info("Showing contact update page for contact with: {}", id);
+        logger.info("Showing contact update page for contact with id: {}", id);
 
         Contact found = contactService.getContactByIdWithDetail(id);
         logger.info("Found contact: {}", found);
@@ -248,4 +248,18 @@ public class ContactController {
             return "redirect:/contact/" + contact.getContactId();
         }
     }
+
+    private void addFeedbackMessage(RedirectAttributes model, String code, Object... params) {
+        logger.info("Adding feedback message with code: {} and params: {}", code, params);
+        String localizedFeedbackMessage = getMessage(code, params);
+        logger.info("Localized message is: {}", localizedFeedbackMessage);
+        model.addFlashAttribute(FLASH_MESSAGE_KEY_FEEDBACK, localizedFeedbackMessage);
+    }
+
+    private String getMessage(String code, Object... params) {
+        Locale current = LocaleContextHolder.getLocale();
+        logger.info("Current locale is {}", current);
+        return messageSource.getMessage(code, params, current);
+    }
+
 }

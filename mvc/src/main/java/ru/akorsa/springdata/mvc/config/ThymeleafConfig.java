@@ -18,7 +18,7 @@ public class ThymeleafConfig {
     private MessageSource messageSource;
 
     @Autowired
-    private SpringSecurityDialect springSecurityDialect;
+    public SpringSecurityDialect springSecurityDialect;
 
     @Bean
     public TemplateResolver templateResolver() {

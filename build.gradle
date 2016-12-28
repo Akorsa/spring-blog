@@ -1,8 +1,7 @@
+
+
 buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-    }
+    repositories { jcenter() }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
         //classpath("org.springframework:springloaded:1.2.4.RELEASE")
@@ -17,7 +16,6 @@ allprojects {
     apply plugin: 'war'
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-
 
     repositories {
         mavenCentral()
@@ -48,10 +46,10 @@ allprojects {
         testCompile 'junit:junit:4.12'
         testCompile "org.mockito:mockito-core"
         testCompile "org.hamcrest:hamcrest-library"
+
         compile ('ch.qos.logback:logback-classic:1.1.3') {
             exclude(module:'slf4j-api')
         }
-    }
 
     mainClassName = 'ru.akorsa.springdata.mvc.WebInitializer'
 
@@ -63,4 +61,11 @@ allprojects {
     }
 }
 
-
+    task stage {
+        dependsOn build
+        doLast {
+            delete fileTree(dir: "build", exclude: "libs")
+            delete fileTree(dir: "build/libs", exclude: "*.jar")
+        }
+    }
+}
