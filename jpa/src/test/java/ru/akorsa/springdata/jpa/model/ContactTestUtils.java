@@ -5,6 +5,7 @@ import ru.akorsa.springdata.jpa.dto.ContactDTO;
 import ru.akorsa.springdata.jpa.dto.ContactPhoneDTO;
 import ru.akorsa.springdata.jpa.dto.HobbyDTO;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +21,8 @@ public class ContactTestUtils {
     private static final String FIRST_NAME = "Foo";
     private static final String LAST_NAME = "Bar";
     private static final Date BIRTH_DATE = TestUtil.date(1969, 6, 9);
+    private static final String ADMIN_USERNAME = "admin";
+    private static final ZonedDateTime ZONED_DATE_TIME = TestUtil.currentZonedDateTime();
     public static final String HOBBY_TITLE = "Quilting";
 
     private static final Set<ContactPhoneDTO> CONTACT_PHONE_DTOS =
@@ -63,6 +66,10 @@ public class ContactTestUtils {
         dto.setLastName(LAST_NAME);
         dto.setBirthDate(BIRTH_DATE);
         dto.setEmail(EMAIL);
+        dto.setCreatedByUser(ADMIN_USERNAME);
+        dto.setCreationTime(ZONED_DATE_TIME);
+        dto.setModifiedByUser(ADMIN_USERNAME);
+        dto.setModificationTime(ZONED_DATE_TIME);
         if (addChildren) {
             dto.setContactPhones(CONTACT_PHONE_DTOS);
             dto.setHobbies(HOBBY_DTOS);
@@ -81,6 +88,10 @@ public class ContactTestUtils {
         contact.setLastName(LAST_NAME);
         contact.setBirthDate(BIRTH_DATE);
         contact.setEmail(EMAIL);
+        contact.setCreatedByUser(ADMIN_USERNAME);
+        contact.setCreationTime(ZONED_DATE_TIME);
+        contact.setModifiedByUser(ADMIN_USERNAME);
+        contact.setModificationTime(ZONED_DATE_TIME);
         return contact;
     }
 
@@ -96,6 +107,10 @@ public class ContactTestUtils {
         dto.setLastName(contact.getLastName());
         dto.setBirthDate(contact.getBirthDate());
         dto.setEmail(contact.getEmail());
+        dto.setCreatedByUser(ADMIN_USERNAME);
+        dto.setCreationTime(ZONED_DATE_TIME);
+        dto.setModifiedByUser(ADMIN_USERNAME);
+        dto.setModificationTime(ZONED_DATE_TIME);
         if (contact.getContactPhones() != null) {
             dto.setContactPhones(contact.getContactPhones()
                     .stream()

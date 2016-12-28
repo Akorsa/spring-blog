@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String[] IGNORED_RESOURCE_LIST = new String[]{"/resources/**",
             "/static/**", "/webjars/**"};
     private static final String[] PERMITALL_RESOURCE_LIST =
-            new String[]{"/", "/login/**", "/contacts/**", "/register/**"};
+            new String[]{"/", "/login/**", "/contacts/**", "/json/**", "/register/**"};
     private static final String[] ADMIN_RESOURCE_LIST = new String[]{"/console/**"};
 
     @Autowired
@@ -103,6 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(PERMITALL_RESOURCE_LIST).permitAll()
                 .anyRequest().authenticated()
+                .and().anonymous().key("anonymous")
                 .and()
                 .formLogin()
                 .loginPage("/login")

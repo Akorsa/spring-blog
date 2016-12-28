@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+        //classpath("org.springframework:springloaded:1.2.4.RELEASE")
     }
 }
 
@@ -19,7 +20,7 @@ allprojects {
 
 
     repositories {
-        mavenLocal()
+        mavenCentral()
     }
 
     configurations {
@@ -53,6 +54,13 @@ allprojects {
     }
 
     mainClassName = 'ru.akorsa.springdata.mvc.WebInitializer'
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir = file("$buildDir/classes/main/")
+        }
+    }
 }
 
 

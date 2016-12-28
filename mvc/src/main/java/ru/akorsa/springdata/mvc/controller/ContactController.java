@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -23,14 +21,12 @@ import ru.akorsa.springdata.jpa.model.ContactPhone;
 import ru.akorsa.springdata.jpa.model.Hobby;
 import ru.akorsa.springdata.jpa.model.validators.ContactFormValidator;
 import ru.akorsa.springdata.jpa.service.ContactService;
+import ru.akorsa.springdata.mvc.common.WebUI;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -48,11 +44,11 @@ public class ContactController {
     protected static final String FEEDBACK_MESSAGE_KEY_CONTACT_DELETED = "feedback.message.contact.deleted";
 
     public static final String FLASH_MESSAGE_KEY_ERROR = "errorMessage";
-    public static final String FLASH_MESSAGE_KEY_FEEDBACK = "feedbackMessage";
     protected static final String CONTACT_VIEW = "contacts/view";
     protected static final String CONTACT_LIST_VIEW = "contacts/list";
     protected static final String CONTACT_FORM_VIEW = "contacts/contactform";
     protected static final String SEARCH_VIEW = "contacts/search";
+    protected static final String CONTACT_OF_THE_DAY_FRAGMENT ="fragments/js :: contactOfTheDay";
 
     protected static final String MODEL_ATTRIBUTE_CONTACT = "contact";
     protected static final String MODEL_ATTRIBUTE_CONTACTS = "contacts";
@@ -65,8 +61,8 @@ public class ContactController {
         this.contactFormValidator = contactFormValidator;
     }
 
-    @Resource
-    private MessageSource messageSource;
+    @Autowired
+    WebUI webUI;
 
     // remember non-editable domain object values to send to service layer
     @InitBinder("contact")
@@ -80,7 +76,7 @@ public class ContactController {
         return contactService.findAll();
     }
 
-    @RequestMapping(value = "/contact/json/{id}", method = GET)
+    @RequestMapping(value = "/json/contact/{id}", method = GET)
     public
     @ResponseBody
     ContactDTO contactById(@PathVariable Long id) throws ContactNotFoundException {
@@ -89,6 +85,21 @@ public class ContactController {
         jacksonMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 
         return ContactUtils.contactToContactDTO(contact);
+    }
+
+    @RequestMapping(value = "/json/cod", method = GET)
+    public String contactOfTheDay(final Model model) throws ContactNotFoundException {
+        Contact contact = contactService.findContactById(ContactUtils.randomContactId());
+        model.addAttribute("cod", contact);
+        return CONTACT_OF_THE_DAY_FRAGMENT;
+    }
+
+    @RequestMapping(value = "/json/secret", method = GET)
+    public @ResponseBody
+    Map<String, String> secretMessage() {
+        Map<String, String> map = new HashMap<>();
+        map.put("message", webUI.getMessage("js.secret.message"));
+        return map;
     }
 
     @RequestMapping(value = "/contact/new", method = GET)
@@ -109,7 +120,7 @@ public class ContactController {
             logger.info("Added contact with information: {}", added);
             status.setComplete();
 
-            addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_CONTACT_ADDED,
+            webUI.addFeedbackMessage(attributes, FEEDBACK_MESSAGE_KEY_CONTACT_ADDED,
                     added.getFirstName(), added.getLastName());
 
             return "redirect:/contacts";
@@ -187,7 +198,7 @@ public class ContactController {
             this.contactService.update(contactDTO);
 
             attributes.addAttribute(PARAMETER_CONTACT_ID, contactDTO.getContactId());
-            addFeedbackMessage(attributes,
+            webUI.addFeedbackMessage(attributes,
                     FEEDBACK_MESSAGE_KEY_CONTACT_UPDATED,
                     contactDTO.getFirstName(), contactDTO.getLastName());
 
@@ -237,18 +248,4 @@ public class ContactController {
             return "redirect:/contact/" + contact.getContactId();
         }
     }
-
-    private void addFeedbackMessage(RedirectAttributes model, String code, Object... params) {
-        logger.info("Adding feedback message with code: {} and params: {}", code, params);
-        String localizedFeedbackMessage = getMessage(code, params);
-        logger.info("Localized message is: {}", localizedFeedbackMessage);
-        model.addFlashAttribute(FLASH_MESSAGE_KEY_FEEDBACK, localizedFeedbackMessage);
-    }
-
-    private String getMessage(String code, Object... params) {
-        Locale current = LocaleContextHolder.getLocale();
-        logger.info("Current locale is {}", current);
-        return messageSource.getMessage(code, params, current);
-    }
-
 }

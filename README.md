@@ -9,6 +9,15 @@ http://akorsa.ru which are listed below in their accompanying implementation ver
 *Implementations listed below by version are found in their corresponding branch, v0.0.1, v0.0.2, etc. Recent branches may not
 contain features found in prior versions.*
 
+##v0.2.1 -- Spring MVC and JavaScript Samplings##
+
+- Bootstrap Dialog Box with requirement to be logged-in to view
+- JQuery Bootstrap Multiselect Plugin with Spring MVC JSON-populated Options and postback
+- SpringLoaded to Hot Reload Java Class updates w/o app restart
+
+##v0.2.0 -- Spring Data JPA Auditing##
+- Spring data JPA Auditing
+
 ##v0.1.9 -- More Child Object Handling in MVC and Thymeleaf
 
 - Hobbies added to Contact Update Form w/ Custom Data Validation

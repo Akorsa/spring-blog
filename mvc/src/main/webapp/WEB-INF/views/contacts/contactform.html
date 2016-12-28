@@ -143,7 +143,7 @@
                             <ul class="hobbyList">
                                 <li th:each="hobby : ${hobbies}">
                                     <input type="checkbox" th:field="*{hobbies}" th:value="${hobby.hobbyId}"/>
-                                    <label th:for="${#ids.prev('hobbies')}" th:text="${hobby}">[Hobby]</label>
+                                    <label th:for="${#ids.prev('hobbies')}" th:text="#{${hobby}}">[Hobby]</label>
                                 </li>
                             </ul>
                         </td>

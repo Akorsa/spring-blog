@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -37,6 +38,7 @@ import ru.akorsa.springdata.jpa.service.ContactService;
 import ru.akorsa.springdata.mvc.AbstractContext;
 import ru.akorsa.springdata.mvc.ContactTestUtils;
 import ru.akorsa.springdata.mvc.MvcTestUtil;
+import ru.akorsa.springdata.mvc.common.WebUI;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -63,6 +65,9 @@ public class ContactControllerTests extends AbstractContext {
     private Contact contact;
     private List<Contact> allContacts;
     private MessageSource mockMessageSource;
+    private AuditorAware<String> auditorAware;
+
+    String user;
 
     private static final String FIELD_NAME_EMAIL_ADDRESS = "email";
     private static final String FIELD_NAME_LAST_NAME = "lastName";
@@ -76,6 +81,9 @@ public class ContactControllerTests extends AbstractContext {
 
     @Autowired
     MockHttpSession session;
+
+    @Autowired
+    WebUI webUi;
 
     @Resource
     private Validator validator;
@@ -127,7 +135,7 @@ public class ContactControllerTests extends AbstractContext {
     @Test
     public void getContactByIdJsonTest() throws Exception {
 
-        mockMvc.perform(get("/contact/json/100").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/json/contact/100").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MvcTestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.contactId", is(1)))
@@ -325,7 +333,7 @@ public class ContactControllerTests extends AbstractContext {
     }
 
     private void assertFeedbackMessage(RedirectAttributes model, String messageCode) {
-        assetFlashMessages(model, messageCode, ContactController.FLASH_MESSAGE_KEY_FEEDBACK);
+        assetFlashMessages(model, messageCode, webUi.FLASH_MESSAGE_KEY_FEEDBACK);
     }
 
     private void assetFlashMessages(RedirectAttributes model, String messageCode, String flashMessageParameterName) {
